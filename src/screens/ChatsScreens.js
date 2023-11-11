@@ -1,67 +1,62 @@
-import { View, Text } from 'react-native'
-import React, { useContext } from 'react';
-import ChatListItem from './../components/ChatListItem'
-import enChats from '../../assets/data/enChats.json'
-import lastMsg from '../../assets/data/lastMsg.json'
-// import hiChats from '../../assets/data/hiChats.json'
-import { FlatList } from 'react-native'
-import {useTranslation} from 'react-i18next';
+import React, { useState, useContext, useRef } from 'react';
+import { View, Text, TextInput, Button, Alert, StyleSheet,Animated,ScrollView,  ImageBackground } from 'react-native';
+import { useTranslation } from 'react-i18next';
 import { MessageContext } from './../../src/components/Message/MessageProvider';
+import Flute from '../components/Flute';
+import AskQuestForm from '../components/AskQuestion';
+import SampleQuestion from '../components/SampleQuestion';
+const image = { uri: "https://www.onlygfx.com/wp-content/uploads/2021/04/white-triangle-pattern-seamless-background-2.jpg" };
 
 const ChatsScreens = () => {
-  const { messages } = useContext(MessageContext);
+  const [question, setQuestion] = useState('');
 
-  function mergeArrays(gods, lastMessage) {
-    const mergedArray = [];
-  
-    gods.forEach((god, index) => {
-      const godLink = god.link;
-      const godMessages = messages[godLink];
-      let myLastMsg = { "id": "m1", 
-      "text": "Chekout", 
-         "createdAt": "2023-05-09T13:30:00.000Z",  
-           "link": "ganesha"}
-      if(godMessages){      
-       myLastMsg = godMessages[0];
-      }else {
-        myLastMsg = lastMessage.find(message => message.link === god.link);
-      }
-      
-        
-      const mergedObject = {
-        id: (index + 1).toString(),
-        user: god,
-        lastMessage: myLastMsg
-      };
-        
-      mergedArray.push(mergedObject);
-    });
-  
-    // Rest of your code...
-      
-    return mergedArray;
-  }
-  function sortMessagesByCreatedAt(messages) {
-    messages.sort((a, b) => {
-      const dateA = new Date(a.lastMessage.createdAt);
-      const dateB = new Date(b.lastMessage.createdAt);
-      return dateB - dateA; // Sort in descending order
-    });
-    return messages;
-  }
+  const handleAskQuestion = () => {
+    if (question.trim() !== '') {
+      Alert.alert('Question Submitted', `Your question: ${question}`);
+    } else {
+      Alert.alert('Error', 'Please enter a valid question.');
+    }
+  };
+
   const { t } = useTranslation();
-  const gods = t('gods');
-  const foGods = JSON.parse(gods);
-  const mergedData = sortMessagesByCreatedAt(mergeArrays(foGods, lastMsg));;
   return (
-    <>    
-    <FlatList
-    data={mergedData}
-    renderItem={({item}) => <ChatListItem chat={item}/>} />
+<ScrollView>
+  <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+    <ImageBackground source={image} style={styles.image}>
+    <Flute />
+   
+    <Text style={{ fontSize: 24, color: 'black', textAlign: 'center', margin: 10 }}>
+    Decoding Life's{' '}
+    <Text style={{ color: '#34d399', fontWeight: 'bold' }}>
+      Puzzlements with Krishna:
+    </Text>
+    {' More Than 500,000+ Queries Responded'}
+</Text>
+<AskQuestForm />
+<SampleQuestion style={{ margin:10,}} />
 
-    </>
+  </ImageBackground>
+</View>
+</ScrollView>
+  );
+};
 
-  )
-}
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    flexDirection: 'column',
+  },
+  image: {
+    flex: 1,
+    resizeMode: 'cover',
+  },
+  text: {
+    color: 'white',
+    fontSize: 42,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    backgroundColor: '#000000a0',
+  },
+});
 
-export default ChatsScreens
+export default ChatsScreens;
