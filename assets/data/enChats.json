@@ -1,0 +1,72 @@
+[
+  {
+     "id":"u1",
+     "name":"Lord Ganesha",
+     "image":"https://res.cloudinary.com/dncukhilq/image/upload/v1687251597/talktogod/godProfileImage/ganesh_ji_zaeoju.jpg",
+     "status":"Talk to Lord Ganesha",
+     "link":"ganesha"
+  },
+  {
+     "id":"u2",
+     "name":"Shiva Ji (Mahadev)",
+     "image":"https://res.cloudinary.com/dncukhilq/image/upload/v1683720630/talktogod/godProfileImage/mahadev_wlwo2b.jpg",
+     "status":"Talk to Lord Shiva",
+     "link":"shiva"
+  },
+  {
+     "id":"u3",
+     "name":"Shri Krishna",
+     "image":"https://res.cloudinary.com/dncukhilq/image/upload/v1687251596/talktogod/godProfileImage/krisna_image_dfza9t.jpg",
+     "status":"Ask your question to Lord Krishna",
+     "link":"krishna"
+  },
+  {
+     "id":"u4",
+     "name":"Shri Rama",
+     "image":"https://res.cloudinary.com/dncukhilq/image/upload/v1687251596/talktogod/godProfileImage/ramji_qhjrn9.jpg",
+     "status":"Talk to Lord Rama",
+     "link":"rama"
+  },
+  {
+     "id":"u5",
+     "name":"Hanuman Ji",
+     "image":"https://res.cloudinary.com/dncukhilq/image/upload/v1682191769/talktogod/godProfileImage/hanuman_bqszir.jpg",
+     "status":"Talk to Lord Hanuman",
+     "link":"hanuman"
+  },
+  {
+     "id":"u6",
+     "name":"Maa Lakshmi",
+     "image":"https://res.cloudinary.com/dncukhilq/image/upload/v1682191770/talktogod/godProfileImage/laxmi_igvkfv.jpg",
+     "status":"Talk to Goddess Lakshmi",
+     "link":"lakshmi"
+  },
+  {
+     "id":"u7",
+     "name":"Maa Durga",
+     "image":"https://res.cloudinary.com/dncukhilq/image/upload/v1682191771/talktogod/godProfileImage/durga_xggc7w.jpg",
+     "status":"Talk to Goddess Durga",
+     "link":"durga"
+  },
+  {
+     "id":"u8",
+     "name":"Maa Saraswati",
+     "image":"https://res.cloudinary.com/dncukhilq/image/upload/v1682191770/talktogod/godProfileImage/swarswati_gjh6fm.jpg",
+     "status":"Talk to Goddess Saraswati",
+     "link":"saraswati"
+  },
+  {
+     "id":"u9",
+     "name":"Saint Sai Baba",
+     "image":"https://res.cloudinary.com/dncukhilq/image/upload/v1682191770/talktogod/godProfileImage/saibaba_wuvigd.jpg",
+     "status":"Talk to Saint Sai Baba",
+     "link":"saibaba"
+  },
+  {
+     "id":"u10",
+     "name":"Jesus Christ",
+     "image":"https://res.cloudinary.com/dncukhilq/image/upload/v1687251596/talktogod/godProfileImage/jesus_ji_sthwgb.jpg",
+     "status":"Talk to Jesus Christ",
+     "link":"jesuschrist"
+  }
+]

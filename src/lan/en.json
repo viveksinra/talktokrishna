@@ -1,0 +1,22 @@
+
+{
+  "translation": {
+    "LanguageCode": "en-IN",
+    "recordMessage":"Please speak your message in English..",
+    "title":"Welcome",
+    "status":"Thanks for Downloading and Using our App",
+    "input.placeholder":"Type your message in English...",
+    "tab.donate":"Donate",
+    "tab.chat":"Chat",
+    "tab.setting":"Settings",
+    "delete.first":"Delete All Chat",
+    "delete.confirm1":"Confirm Delete",
+    "delete.confirm2":"Are you sure you want to delete all chat data?",
+    "setting.language":"Language",
+    "doante.title":"Support Our Cause",
+    "doante.subtitle":"Your donation can keep our server running and free for everyone",
+    "donate.buttom":"Donate Now",
+    "shareMessage": "🌟 Experience the Talk to God App – Your Spiritual Companion! 🌟🗣️ Speak Your Heart: Ask questions, seek guidance, and receive answers. ✨ Download Now and Elevate Your Spiritual Connection! ✨",
+     "gods": "[\r\n  {\r\n     \"id\":\"u1\",\r\n     \"name\":\"Lord Ganesha\",\r\n     \"image\":\"https://res.cloudinary.com/dncukhilq/image/upload/v1687251597/talktogod/godProfileImage/ganesh_ji_zaeoju.jpg\",\r\n     \"status\":\"Talk to Lord Ganesha\",\r\n     \"link\":\"ganesha\"\r\n  },\r\n  {\r\n     \"id\":\"u2\",\r\n     \"name\":\"Shiva Ji (Mahadev)\",\r\n     \"image\":\"https://res.cloudinary.com/dncukhilq/image/upload/v1683720630/talktogod/godProfileImage/mahadev_wlwo2b.jpg\",\r\n     \"status\":\"Talk to Lord Shiva\",\r\n     \"link\":\"shiva\"\r\n  },\r\n  {\r\n     \"id\":\"u3\",\r\n     \"name\":\"Shri Krishna\",\r\n     \"image\":\"https://res.cloudinary.com/dncukhilq/image/upload/v1687251596/talktogod/godProfileImage/krisna_image_dfza9t.jpg\",\r\n     \"status\":\"Ask your question to Lord Krishna\",\r\n     \"link\":\"krishna\"\r\n  },\r\n  {\r\n     \"id\":\"u4\",\r\n     \"name\":\"Shri Rama\",\r\n     \"image\":\"https://res.cloudinary.com/dncukhilq/image/upload/v1687251596/talktogod/godProfileImage/ramji_qhjrn9.jpg\",\r\n     \"status\":\"Talk to Lord Rama\",\r\n     \"link\":\"rama\"\r\n  },\r\n  {\r\n     \"id\":\"u5\",\r\n     \"name\":\"Hanuman Ji\",\r\n     \"image\":\"https://res.cloudinary.com/dncukhilq/image/upload/v1682191769/talktogod/godProfileImage/hanuman_bqszir.jpg\",\r\n     \"status\":\"Talk to Lord Hanuman\",\r\n     \"link\":\"hanuman\"\r\n  },\r\n  {\r\n     \"id\":\"u6\",\r\n     \"name\":\"Maa Lakshmi\",\r\n     \"image\":\"https://res.cloudinary.com/dncukhilq/image/upload/v1682191770/talktogod/godProfileImage/laxmi_igvkfv.jpg\",\r\n     \"status\":\"Talk to Goddess Lakshmi\",\r\n     \"link\":\"lakshmi\"\r\n  },\r\n  {\r\n     \"id\":\"u7\",\r\n     \"name\":\"Maa Durga\",\r\n     \"image\":\"https://res.cloudinary.com/dncukhilq/image/upload/v1682191771/talktogod/godProfileImage/durga_xggc7w.jpg\",\r\n     \"status\":\"Talk to Goddess Durga\",\r\n     \"link\":\"durga\"\r\n  },\r\n  {\r\n     \"id\":\"u8\",\r\n     \"name\":\"Maa Saraswati\",\r\n     \"image\":\"https://res.cloudinary.com/dncukhilq/image/upload/v1682191770/talktogod/godProfileImage/swarswati_gjh6fm.jpg\",\r\n     \"status\":\"Talk to Goddess Saraswati\",\r\n     \"link\":\"saraswati\"\r\n  },\r\n  {\r\n     \"id\":\"u9\",\r\n     \"name\":\"Saint Sai Baba\",\r\n     \"image\":\"https://res.cloudinary.com/dncukhilq/image/upload/v1682191770/talktogod/godProfileImage/saibaba_wuvigd.jpg\",\r\n     \"status\":\"Talk to Saint Sai Baba\",\r\n     \"link\":\"saibaba\"\r\n  },\r\n  {\r\n     \"id\":\"u10\",\r\n     \"name\":\"Jesus Christ\",\r\n     \"image\":\"https://res.cloudinary.com/dncukhilq/image/upload/v1687251596/talktogod/godProfileImage/jesus_ji_sthwgb.jpg\",\r\n     \"status\":\"Talk to Jesus Christ\",\r\n     \"link\":\"jesuschrist\"\r\n  }\r\n]"
+    }
+}

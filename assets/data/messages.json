@@ -1,0 +1,119 @@
+[
+  {
+    "id": "m1",
+    "text": "Thank you for explaining me that in detail",
+    "createdAt": "2023-05-09T12:48:00.000Z",
+    "user": {
+      "id": "u1",
+      "name": "Vadim"
+    }
+  },
+  {
+    "id": "m2",
+    "text": "i hope you understood what i am trying to say",
+    "createdAt": "2022-10-03T14:49:00.000Z",
+    "user": {
+      "id": "u2",
+      "name": "Lukas"
+    }
+  },
+  {
+    "id": "m3",
+    "text": " I am Lord Ganesha, the remover of obstacles and the deity of beginnings. I am revered by Hindus all over the world and I am also known as Ganapati, Vinayaka, or Pillaiyar. I am also known for my elephant head and",
+    "createdAt": "2022-10-03T14:49:40.000Z",
+    "user": {
+      "id": "u2",
+      "name": "Lukas"
+    }
+  },
+  {
+    "id": "m4",
+    "text": "what is your name",
+    "createdAt": "2022-10-03T14:50:00.000Z",
+    "user": {
+      "id": "u1",
+      "name": "Vadim"
+    }
+  },
+  {
+    "id": "m5",
+    "text": "How is your uni going?",
+    "createdAt": "2022-10-03T14:51:00.000Z",
+    "user": {
+      "id": "u1",
+      "name": "Vadim"
+    }
+  },
+  {
+    "id": "m6",
+    "text": " My name, Ganesha, is derived from two Sanskrit words, ‘gana’ meaning a group or multitude and ‘isha’ meaning lord or master. I am therefore known as the Lord of all the Ganas, which is a reference to the celestial",
+    "createdAt": "2022-10-03T14:49:00.000Z",
+    "user": {
+      "id": "u2",
+      "name": "Lukas"
+    }
+  },
+  {
+    "id": "m7",
+    "text": "what is your real name",
+    "createdAt": "2022-10-03T14:53:00.000Z",
+    "user": {
+      "id": "u1",
+      "name": "Vadim"
+    }
+  },
+  {
+    "id": "m8",
+    "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+    "createdAt": "2022-10-03T14:53:00.000Z",
+    "user": {
+      "id": "u1",
+      "name": "Vadim"
+    }
+  },
+  {
+    "id": "m9",
+    "text": "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book",
+    "createdAt": "2022-10-03T14:53:00.000Z",
+    "user": {
+      "id": "u2",
+      "name": "Lukas"
+    }
+  },
+  {
+    "id": "m10",
+    "text": "It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in",
+    "createdAt": "2022-10-03T14:53:00.000Z",
+    "user": {
+      "id": "u2",
+      "name": "Lukas"
+    }
+  },
+  {
+    "id": "m11",
+    "text": "Ok.",
+    "createdAt": "2022-10-03T14:53:00.000Z",
+    "user": {
+      "id": "u2",
+      "name": "Lukas"
+    }
+  },
+  {
+    "id": "m12",
+    "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+    "createdAt": "2022-10-03T14:53:00.000Z",
+    "user": {
+      "id": "u1",
+      "name": "Vadim"
+    }
+  },
+  {
+    "id": "m13",
+    "text": "It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in",
+    "createdAt": "2022-10-03T14:53:00.000Z",
+    "user": {
+      "id": "u1",
+      "name": "Vadim"
+    }
+  }
+]

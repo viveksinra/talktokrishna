@@ -1,0 +1,72 @@
+[
+  {
+    "id": "u1",
+    "name": "श्री गणेश जी",
+    "image": "https://res.cloudinary.com/dncukhilq/image/upload/v1687251597/talktogod/godProfileImage/ganesh_ji_zaeoju.jpg",
+    "status": "श्री गणेश जी से बात करें",
+    "link": "ganesha"
+  },
+  {
+    "id": "u2",
+    "name": "शिव जी (महादेव)",
+    "image": "https://res.cloudinary.com/dncukhilq/image/upload/v1683720630/talktogod/godProfileImage/mahadev_wlwo2b.jpg",
+    "status": "भगवान शिव से बात करें",
+    "link": "shiva"
+  },
+  {
+    "id": "u3",
+    "name": "श्री कृष्ण",
+    "image": "https://res.cloudinary.com/dncukhilq/image/upload/v1687251596/talktogod/godProfileImage/krisna_image_dfza9t.jpg",
+    "status": "श्री कृष्ण से प्रश्न पूछें",
+    "link": "krishna"
+  },
+  {
+    "id": "u4",
+    "name": "श्री राम",
+    "image": "https://res.cloudinary.com/dncukhilq/image/upload/v1687251596/talktogod/godProfileImage/ramji_qhjrn9.jpg",
+    "status": "भगवान राम से बात करें",
+    "link": "rama"
+  },
+  {
+    "id": "u5",
+    "name": "हनुमान जी",
+    "image": "https://res.cloudinary.com/dncukhilq/image/upload/v1682191769/talktogod/godProfileImage/hanuman_bqszir.jpg",
+    "status": "भगवान हनुमान से बात करें",
+    "link": "hanuman"
+  },
+  {
+    "id": "u6",
+    "name": "माँ लक्ष्मी",
+    "image": "https://res.cloudinary.com/dncukhilq/image/upload/v1682191770/talktogod/godProfileImage/laxmi_igvkfv.jpg",
+    "status": "माँ लक्ष्मी से बात करें",
+    "link": "lakshmi"
+  },
+  {
+    "id": "u7",
+    "name": "माँ दुर्गा",
+    "image": "https://res.cloudinary.com/dncukhilq/image/upload/v1682191771/talktogod/godProfileImage/durga_xggc7w.jpg",
+    "status": "माँ दुर्गा से बात करें",
+    "link": "durga"
+  },
+  {
+    "id": "u8",
+    "name": "माँ सरस्वती",
+    "image": "https://res.cloudinary.com/dncukhilq/image/upload/v1682191770/talktogod/godProfileImage/swarswati_gjh6fm.jpg",
+    "status": "माँ सरस्वती से बात करें",
+    "link": "saraswati"
+  },
+  {
+    "id": "u9",
+    "name": "साईं बाबा",
+    "image": "https://res.cloudinary.com/dncukhilq/image/upload/v1682191770/talktogod/godProfileImage/saibaba_wuvigd.jpg",
+    "status": "साईं बाबा से बात करें",
+    "link": "saibaba"
+  },
+  {
+    "id": "u10",
+    "name": "यीशु मसीह",
+    "image": "https://res.cloudinary.com/dncukhilq/image/upload/v1687251596/talktogod/godProfileImage/jesus_ji_sthwgb.jpg",
+    "status": "यीशु मसीह से बात करें",
+    "link": "jesuschrist"
+  }
+]
