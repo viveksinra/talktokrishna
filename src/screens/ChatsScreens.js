@@ -8,15 +8,7 @@ import SampleQuestion from '../components/SampleQuestion';
 const image = { uri: "https://www.onlygfx.com/wp-content/uploads/2021/04/white-triangle-pattern-seamless-background-2.jpg" };
 
 const ChatsScreens = () => {
-  const [question, setQuestion] = useState('');
 
-  const handleAskQuestion = () => {
-    if (question.trim() !== '') {
-      Alert.alert('Question Submitted', `Your question: ${question}`);
-    } else {
-      Alert.alert('Error', 'Please enter a valid question.');
-    }
-  };
 
   const { t } = useTranslation();
   return (
