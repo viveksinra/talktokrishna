@@ -1,29 +1,10 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
-import { useNavigation } from '@react-navigation/native';
 
-function AskQuestForm() {
+
+function AskQuestForm({handleAskQuestion}) {
   const [question, setQuestion] = useState("");
-  const navigation = useNavigation();
-
-  
-
-  function handleAskQuestion() {
-    if (question.trim() !== '') {
-      navigation.navigate('OneChats', {
-        id: "u3",
-        name: "Shri Krishna",
-        image: "https://res.cloudinary.com/dncukhilq/image/upload/v1687251596/talktogod/godProfileImage/krisna_image_dfza9t.jpg",
-        link: "krishna",
-        question:question
-      })
-    } else {
-      Alert.alert('Error', 'Please enter a valid question.');
-    }
-
-  }
-
   return (
     <View style={styles.container}>
       <Text style={styles.headerText}>
@@ -43,12 +24,12 @@ function AskQuestForm() {
             <MaterialIcons name="mic" size={35} color="white" />
           </TouchableOpacity>
         ) : (
-          <TouchableOpacity style={styles.sendButton} onPress={handleAskQuestion}>
+          <TouchableOpacity style={styles.sendButton} onPress={() => {handleAskQuestion(question),setQuestion("")}}>
             <MaterialIcons name="send" size={35} color="white" />
           </TouchableOpacity>
         )}
       </View>
-      <TouchableOpacity style={styles.askButton} onPress={handleAskQuestion}>
+      <TouchableOpacity style={styles.askButton} onPress={() => {handleAskQuestion(question),setQuestion("")}}>
         <Text style={styles.askButtonText}>Ask Question</Text>
       </TouchableOpacity>
     </View>

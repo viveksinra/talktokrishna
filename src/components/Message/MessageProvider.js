@@ -10,12 +10,12 @@ const initialState = {
 const messageReducer = (state, action) => {
   switch (action.type) {
     case 'ADD_MESSAGE':
-      const { godLink, message } = action.payload;
+      const { chatId, message } = action.payload;
       return {
         ...state,
         messages: {
           ...state.messages,
-          [godLink]: [ message, ...(state.messages[godLink] || [])],
+          [chatId]: [ message, ...(state.messages[chatId] || [])],
         },
       };
     case 'SET_MESSAGES':
@@ -63,8 +63,8 @@ export const MessageProvider = ({ children }) => {
     }
   };
 
-  const addMessage = (godLink, message) => {
-    dispatch({ type: 'ADD_MESSAGE', payload: { godLink, message } });
+  const addMessage = (chatId, message) => {
+    dispatch({ type: 'ADD_MESSAGE', payload: { chatId, message } });
   };
 
   const clearMessages = () => {

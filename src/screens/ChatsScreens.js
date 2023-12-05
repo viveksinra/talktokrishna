@@ -6,11 +6,29 @@ import Flute from '../components/Flute';
 import AskQuestForm from '../components/AskQuestion';
 import SampleQuestion from '../components/SampleQuestion';
 const image = { uri: "https://www.onlygfx.com/wp-content/uploads/2021/04/white-triangle-pattern-seamless-background-2.jpg" };
-
+import { useNavigation } from '@react-navigation/native';
+import {generateRandomId, generateRandomMessageId} from "./../utils/randomId"
 const ChatsScreens = () => {
-
-
+  const navigation = useNavigation();
   const { t } = useTranslation();
+  generateRandomId
+  function handleAskQuestion(quest) {
+    if (quest.trim() !== '') {
+      const randomId = generateRandomId();
+      navigation.navigate('OneChats', {
+        id: randomId,
+        chatId:randomId,
+        name: "Shri Krishna",
+        image: "https://res.cloudinary.com/dncukhilq/image/upload/v1687251596/talktogod/godProfileImage/krisna_image_dfza9t.jpg",
+        link: "krishna",
+        question:quest
+      })
+    } else {
+      Alert.alert('Error', 'Please enter a valid question.');
+    }
+
+  }
+
   return (
 <ScrollView>
   <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
@@ -24,8 +42,8 @@ const ChatsScreens = () => {
     </Text>
     {' More Than 500,000+ Queries Responded'}
 </Text>
-<AskQuestForm />
-<SampleQuestion style={{ margin:10,}} />
+<AskQuestForm handleAskQuestion={handleAskQuestion}/>
+<SampleQuestion style={{ margin:10,}} handleAskQuestion={handleAskQuestion}/>
 
   </ImageBackground>
 </View>

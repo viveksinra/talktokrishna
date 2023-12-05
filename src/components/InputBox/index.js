@@ -8,14 +8,14 @@ import { useTranslation } from 'react-i18next';
 import LottieView from 'lottie-react-native';
 import axios from 'axios'; // Import the axios library
 import { ActivityIndicator } from 'react-native';
+import { generateRandomMessageId } from '../../utils/randomId';
 // const startUrl = "https://merekisan.in"
 const startUrl = "http://192.168.1.12:2040"
 // const startUrl = "http://192.168.1.10:2040"
 
-
-const InputBox = ({ godLink }) => {
+const InputBox = ({ godLink,chatId,question }) => {
 const { messages } = useContext(MessageContext);
-const godMessage = messages[godLink];
+const godMessage = messages[chatId];
 
   const { t } = useTranslation();
   const LanguageCode = t('LanguageCode')
@@ -29,6 +29,30 @@ const godMessage = messages[godLink];
   const timerIntervalRef = useRef(null);
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [isGettingResponse, setIsGettingResponse] = useState(false);
+
+  useEffect(() => {
+    try {
+     
+        const randomId = generateRandomMessageId();
+        const message = {
+          id: randomId,
+          text: question,
+          audioUrl:"",
+          messageType:"text",
+          lan:LanguageCode,
+          createdAt: new Date(),
+          user: {
+            id: 'userId',
+            name: 'Your Name',
+          },
+        };
+        sendAndGetResponse(godLink,chatId, message);
+        setNewMessage('');
+      
+    } catch (error) {
+      console.error('Error in InputBox useEffect:', error);
+    }
+  }, []);
 
   // Set a timeout to reset the state after 1 minute (60000 milliseconds)
   const resetStateTimer = setTimeout(() => {
@@ -45,18 +69,18 @@ const godMessage = messages[godLink];
     };
   }, []);
 
-  const sendAndGetResponse = async (godLink, message) => {
+  const sendAndGetResponse = async (godLink,chatId, message) => {
     setIsGettingResponse(true)
     try{
-      addMessage(godLink, message);
+      addMessage(chatId, message);
       let url = `${startUrl}/api/other/ttg/callAiGod/getResponse`
-      const prevMsgs = godMessage.slice(-4);
+      const prevMsgs = godMessage?.slice(-4);
 
       const response = await axios.post(url, {godLink,message,prevMsgs})
         let myRes = response.data
         if(myRes.variant == "success"){
           setIsGettingResponse(false)
-          addMessage(godLink, myRes.resMessage); 
+          addMessage(chatId, myRes.resMessage); 
         }
     }catch(error){
       ToastAndroid.show('some error occured while sending or setting the message', ToastAndroid.SHORT);
@@ -107,7 +131,7 @@ const godMessage = messages[godLink];
         // Use the S3 URL as needed
        
      
-        const randomId = generateRandomId();
+        const randomId = generateRandomMessageId();
         const message = {
           id: randomId,
           text:  s3URL?.transcription || "Failed",
@@ -123,7 +147,7 @@ const godMessage = messages[godLink];
         console.log('Recording uploaded:');
 
     setIsAnalyzing(false)
-    sendAndGetResponse(godLink, message);
+    sendAndGetResponse(godLink,chatId, message);
         setNewMessage('');
       } else {
         ToastAndroid.show('No audio recording found', ToastAndroid.SHORT);
@@ -143,10 +167,6 @@ const godMessage = messages[godLink];
     setIsRecording(false);
   };
   
-  
-
-  
-
   const cancelRecording = async () => {
     clearInterval(timerIntervalRef.current);
     setRecordingModalVisible(false);
@@ -161,30 +181,13 @@ const godMessage = messages[godLink];
     setIsRecording(false);
   };
 
-  const generateRandomId = () => {
-    const now = new Date();
-    const year = now.getFullYear().toString().slice(-2);
-    const month = padZero(now.getMonth() + 1);
-    const day = padZero(now.getDate());
-    const hours = padZero(now.getHours());
-    const minutes = padZero(now.getMinutes());
-    const seconds = padZero(now.getSeconds());
-    const randomNum = getRandomInt(100, 999);
 
-    return year + month + day + hours + minutes + seconds + randomNum;
-  };
 
-  const padZero = (value) => {
-    return value < 10 ? '0' + value : value;
-  };
 
-  const getRandomInt = (min, max) => {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-  };
 
   const onSend = () => {
     if (!recording && newMessage.trim()) {
-      const randomId = generateRandomId();
+      const randomId = generateRandomMessageId();
       const message = {
         id: randomId,
         text: newMessage,
@@ -197,7 +200,7 @@ const godMessage = messages[godLink];
           name: 'Your Name',
         },
       };
-      sendAndGetResponse(godLink, message);
+      sendAndGetResponse(godLink,chatId, message);
       setNewMessage('');
     } else if (!recording) {
       startRecording();

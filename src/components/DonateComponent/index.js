@@ -1,12 +1,34 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { StyleSheet, TextInput, Text, View, TouchableOpacity } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { FontAwesome } from '@expo/vector-icons';
 import { useTranslation } from 'react-i18next';
 import { Linking } from 'react-native';
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const DonateComponent = () => {
+
+  useEffect(() => {
+    const fetchAllDataFromStorage = async () => {
+      try {
+        // Get all keys stored in local storage
+        const allKeys = await AsyncStorage.getAllKeys();
+
+        // Get all data corresponding to the keys
+        const allData = await AsyncStorage.multiGet(allKeys);
+
+        // Log the retrieved data
+        console.log('All data from local storage:', allData);
+      } catch (error) {
+        console.error('Error fetching all data from local storage:', error);
+      }
+    };
+
+    // Call the function when the component mounts
+    fetchAllDataFromStorage();
+  }, [selectedAmount]);
+
+
   const {t} = useTranslation();
 
   const amounts = [1, 5, 11, 21, 51, 101, 251, 501, 1100, 2100, 5100, 11000];

@@ -1,82 +1,33 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import { View, StyleSheet, ScrollView } from 'react-native';
+import QuestionCard from './questionCard'; // Make sure to import the QuestionCard component
 
-const SampleQuestion = () => {
+const SampleQuestionList = ({handleAskQuestion}) => {
+  const questions = [
+    "How can I overcome my attachment to material possessions and wealth?",
+    "How can I develop a deeper sense of wisdom and understanding?",
+    "Another question goes here...",
+    // Add more questions as needed
+  ];
   return (
-    <View style={styles.container}>
-      <TouchableOpacity style={styles.touchable}>
-        <View style={styles.row}>
-          <View style={styles.textContainer}>
-            <Text style={styles.text}>
-            How can I overcome my attachment to material possessions and wealth?
-                </Text>
-          </View>
-          <View style={styles.iconContainer}>
-            <Icon name="arrow-right" size={20} color="#000" />
-          </View>
-        </View>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.touchable}>
-        <View style={styles.row}>
-          <View style={styles.textContainer}>
-            <Text style={styles.text}>
-            How can I develop a deeper sense of wisdom and understanding?
-                </Text>
-          </View>
-          <View style={styles.iconContainer}>
-            <Icon name="arrow-right" size={20} color="#000" />
-          </View>
-        </View>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.touchable}>
-        <View style={styles.row}>
-          <View style={styles.textContainer}>
-            <Text style={styles.text}>
-            How can I develop a deeper sense of wisdom and understanding?
-                </Text>
-          </View>
-          <View style={styles.iconContainer}>
-            <Icon name="arrow-right" size={20} color="#000" />
-          </View>
-        </View>
-      </TouchableOpacity>
-    </View>
+    <ScrollView contentContainerStyle={styles.container}>
+      {questions.map((question, index) => (
+        <QuestionCard
+          key={index}
+          question={question}
+          handleAskQuestion={() => handleAskQuestion(question)}
+        />
+      ))}
+    </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flexGrow: 1,
     alignItems: 'center',
     marginTop: 2,
   },
-  touchable: {
-    backgroundColor: 'white',
-    borderRadius: 15,
-    margin: 3,
-    padding: 10,
-    alignItems: 'center',
-    width: '96%',
-    borderColor: 'green',
-    borderWidth: 2,
-  },
-  row: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  textContainer: {
-    flex: 0.9,
-  },
-  text: {
-    color: '#000',
-    fontWeight: 'bold',
-    fontSize: 16,
-  },
-  iconContainer: {
-    flex: 0.1,
-    alignItems: 'flex-end',
-  },
 });
 
-export default SampleQuestion;
+export default SampleQuestionList;

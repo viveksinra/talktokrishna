@@ -16,6 +16,8 @@ const OneChatScreen = () => {
   const donateButtonImage = 'https://res.cloudinary.com/dncukhilq/image/upload/v1683721708/talktogod/imageUsedInApp/Donate_Button-_umdown.png';
   const { messages } = useContext(MessageContext);
   const godLink = route.params.link;
+  const chatId = route.params.chatId;
+  const question = route.params.question;
 
   const handleDonatePress = () => {
     navigation.navigate('Donate');
@@ -86,13 +88,13 @@ const OneChatScreen = () => {
     <View style={styles.container}>
       <ImageBackground source={bg} style={styles.background}>
         <FlatList
-          data={messages[godLink]}
+          data={messages[chatId]}
           renderItem={({ item }) => <Message message={item} key={item.id} />}
           keyExtractor={(item) => item.id}
           style={styles.list}
           inverted
         />
-        <InputBox godLink={godLink} />
+        <InputBox godLink={godLink} chatId={chatId} question={question} />
       </ImageBackground>
     </View>
   );

@@ -4,6 +4,8 @@ import { View, Text, Image, StyleSheet } from 'react-native';
 import DonateComponent from './../components/DonateComponent'
 
 const DonateScreen = () => {
+
+
   return (
     
     <View style={{ flex: 1 }}>
