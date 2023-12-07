@@ -21,11 +21,26 @@ const ChatsScreens = () => {
         name: "Shri Krishna",
         image: "https://res.cloudinary.com/dncukhilq/image/upload/v1687251596/talktogod/godProfileImage/krisna_image_dfza9t.jpg",
         link: "krishna",
-        question:quest
+        question:quest,
+        isRec:false
       })
     } else {
       Alert.alert('Error', 'Please enter a valid question.');
     }
+
+  }
+  function handleRecQuestion() {
+      const randomId = generateRandomId();
+      navigation.navigate('OneChats', {
+        id: randomId,
+        chatId:randomId,
+        name: "Shri Krishna",
+        image: "https://res.cloudinary.com/dncukhilq/image/upload/v1687251596/talktogod/godProfileImage/krisna_image_dfza9t.jpg",
+        link: "krishna",
+        question:"",
+        isRec:true
+      })
+ 
 
   }
 
@@ -42,7 +57,7 @@ const ChatsScreens = () => {
     </Text>
     {' More Than 500,000+ Queries Responded'}
 </Text>
-<AskQuestForm handleAskQuestion={handleAskQuestion}/>
+<AskQuestForm handleAskQuestion={handleAskQuestion} handleRecQuestion={handleRecQuestion}/>
 <SampleQuestion style={{ margin:10,}} handleAskQuestion={handleAskQuestion}/>
 
   </ImageBackground>

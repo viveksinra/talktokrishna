@@ -3,7 +3,7 @@ import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-nativ
 import { MaterialIcons } from '@expo/vector-icons';
 
 
-function AskQuestForm({handleAskQuestion}) {
+function AskQuestForm({handleAskQuestion,handleRecQuestion}) {
   const [question, setQuestion] = useState("");
   return (
     <View style={styles.container}>
@@ -20,7 +20,7 @@ function AskQuestForm({handleAskQuestion}) {
           onChangeText={(text) => setQuestion(text)}
         />
         {!question ? (
-          <TouchableOpacity style={styles.startButton}>
+          <TouchableOpacity style={styles.startButton} onPress={() => {handleRecQuestion(),setQuestion("")}}>
             <MaterialIcons name="mic" size={35} color="white" />
           </TouchableOpacity>
         ) : (

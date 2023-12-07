@@ -18,6 +18,8 @@ const OneChatScreen = () => {
   const godLink = route.params.link;
   const chatId = route.params.chatId;
   const question = route.params.question;
+  const isRec = route.params.isRec;
+  
 
   const handleDonatePress = () => {
     navigation.navigate('Donate');
@@ -94,7 +96,7 @@ const OneChatScreen = () => {
           style={styles.list}
           inverted
         />
-        <InputBox godLink={godLink} chatId={chatId} question={question} />
+        <InputBox godLink={godLink} chatId={chatId} question={question} isRec={isRec} />
       </ImageBackground>
     </View>
   );
