@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect,useRef } from 'react';
-import { View, TextInput, StyleSheet, ToastAndroid, Modal, Text } from 'react-native';
+import { View, TextInput,ScrollView, StyleSheet, ToastAndroid, Modal, Text } from 'react-native';
 import { MessageContext } from './../../../src/components/Message/MessageProvider';
 import { useTranslation } from 'react-i18next';
 import LottieView from 'lottie-react-native';
@@ -8,6 +8,8 @@ import { ActivityIndicator } from 'react-native';
 import axios from 'axios'; // Import the axios library
 import { generateRandomMessageId } from '../../utils/randomId';
 import RecordingComponent from './recordingCom';
+import TextInputCom from './textInputCom';
+import ExampleQuest from './ExampleQuest';
 const startUrl = "https://merekisan.in"
 // const startUrl = "http://192.168.1.12:2040"
 // const startUrl = "http://192.168.1.10:2040"
@@ -27,7 +29,7 @@ const godMessage = messages[chatId];
   // Set a timeout to reset the state after 1 minute (60000 milliseconds)
   const resetStateTimer = setTimeout(() => {
     setIsGettingResponse(false);
-  }, 150000);
+  }, 150);
 
   useEffect(() => {
     // Audio.requestPermissionsAsync();
@@ -85,12 +87,10 @@ const godMessage = messages[chatId];
       console.log("some error occured while sending or setting the message" + error)
     }
     setIsGettingResponse(false)
-  };
-
-
-  
+  }; 
 
   const onSend = () => {
+
     if ( newMessage.trim()) {
       const randomId = generateRandomMessageId();
       const message = {
@@ -111,14 +111,17 @@ const godMessage = messages[chatId];
   };
 
   return (
-    <View style={styles.container}>
-      {/* Text Input */}
-      <TextInput
-        value={newMessage}
-        onChangeText={setNewMessage}
-        placeholder={t('input.placeholder')}
-        style={styles.input}onSend
-      />
+    <>
+  <ExampleQuest 
+  onSend = {onSend}
+  setNewMessage = {setNewMessage}
+  />
+    <View style={styles.container}>    
+
+  <TextInputCom 
+  newMessage = {newMessage}
+  setNewMessage = {setNewMessage}
+  />
      <RecordingComponent 
      sendAndGetResponse={sendAndGetResponse} 
      onSend = {onSend}
@@ -146,6 +149,7 @@ const godMessage = messages[chatId];
 </Modal>
 
     </View>
+    </>
   );
 };
 
@@ -154,6 +158,13 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     backgroundColor: 'whitesmoke',
     padding: 5,
+  },
+  questionContainer: {
+    backgroundColor: '#f0f0f0', // Choose a suitable background color
+    padding: 10,
+  },
+  questionText: {
+    fontSize: 16, // Adjust the font size as needed
   },
   input: {
     flex: 1,
