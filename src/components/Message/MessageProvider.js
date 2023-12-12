@@ -29,6 +29,14 @@ const messageReducer = (state, action) => {
           ...state,
           messages: {},
         };
+    case 'REMOVE_FULL_CHAT':
+      const { chatIdToRemove } = action.payload;
+      const { [chatIdToRemove]: _, ...remainingMessages } = state.messages;
+      return {
+        ...state,
+        messages: remainingMessages,
+      };
+  
     default:
       return state;
   }
@@ -71,9 +79,11 @@ export const MessageProvider = ({ children }) => {
   const clearMessages = () => {
     dispatch({ type: 'CLEAR_MESSAGES' });
   };
-
+  const removeFullChat = (chatIdToRemove) => {
+    dispatch({ type: 'REMOVE_FULL_CHAT', payload: { chatIdToRemove } });
+  };
   return (
-    <MessageContext.Provider value={{ messages: state.messages, addMessage,clearMessages }}>
+    <MessageContext.Provider value={{ messages: state.messages, addMessage,clearMessages,removeFullChat }}>
       {children}
     </MessageContext.Provider>
   );
