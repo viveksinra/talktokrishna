@@ -11,6 +11,7 @@ import {generateRandomId, generateRandomMessageId} from "./../utils/randomId"
 const ChatsScreens = () => {
   const navigation = useNavigation();
   const { t } = useTranslation();
+  const LanguageCode = t('LanguageCode') 
   generateRandomId
   function handleAskQuestion(quest) {
     if (quest.trim() !== '') {
@@ -22,7 +23,8 @@ const ChatsScreens = () => {
         image: "https://res.cloudinary.com/dncukhilq/image/upload/v1687251596/talktogod/godProfileImage/krisna_image_dfza9t.jpg",
         link: "krishna",
         question:quest,
-        isRec:false
+        isRec:false,
+        isHistory:false
       })
     } else {
       Alert.alert('Error', 'Please enter a valid question.');
@@ -38,7 +40,9 @@ const ChatsScreens = () => {
         image: "https://res.cloudinary.com/dncukhilq/image/upload/v1687251596/talktogod/godProfileImage/krisna_image_dfza9t.jpg",
         link: "krishna",
         question:"",
-        isRec:true
+        isRec:true,
+        isHistory:false
+
       })
  
 
@@ -51,12 +55,26 @@ const ChatsScreens = () => {
     <Flute />
    
     <Text style={{ fontSize: 24, color: 'black', textAlign: 'center', margin: 10 }}>
-    Decoding Life's{' '}
+   {(LanguageCode !== 'hi-IN')?( "Decoding Life's ") :("जीवन की पहेलियों को ") }
     <Text style={{ color: '#34d399', fontWeight: 'bold' }}>
-      Puzzlements with Krishna:
+    {(LanguageCode !== 'hi-IN')?("Puzzlements with Krishna: ") :("श्री कृष्ण के साथ सुलझाएँ: ") }
+      
     </Text>
-    {' More Than 500,000+ Queries Responded'}
+    {(LanguageCode !== 'hi-IN')?("More Than 500,000+ Queries Responded") :("500,000+ से अधिक प्रश्नों का उत्तर दिया गया") }
+    {'\n'}
+    <Text style={styles.headerText}>
+    {(LanguageCode !== 'hi-IN')?("ASK ") :("अपने प्रश्न का उत्तर") }
+        
+        <Text style={{ color: '#34d399', fontWeight: 'bold' }}>
+          
+    {(LanguageCode !== 'hi-IN')?("Divine Krishna ") :(" श्री कृष्ण से ") }
+
+          </Text>
+    {(LanguageCode !== 'hi-IN')?("your Questions:-") :("प्राप्त करें:-") }
+
+         </Text>
 </Text>
+
 <AskQuestForm handleAskQuestion={handleAskQuestion} handleRecQuestion={handleRecQuestion}/>
 <SampleQuestion style={{ margin:10,}} handleAskQuestion={handleAskQuestion}/>
 
@@ -74,6 +92,12 @@ const styles = StyleSheet.create({
   image: {
     flex: 1,
     resizeMode: 'cover',
+  },
+  headerText: {
+    color: '#00BFFF',
+    fontWeight: 'bold',
+    fontSize: 20,
+    marginBottom: 15,
   },
   text: {
     color: 'white',

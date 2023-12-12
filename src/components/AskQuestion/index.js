@@ -1,17 +1,19 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
 
 
 function AskQuestForm({handleAskQuestion,handleRecQuestion}) {
   const [question, setQuestion] = useState("");
+  const navigation = useNavigation();
+
+  function handleShowChatHistory() {
+    navigation.navigate('ChatHistoryScreen');
+  }
   return (
     <View style={styles.container}>
-      <Text style={styles.headerText}>
-        ASK{' '}
-        <Text style={styles.highlightText}>Divine Krishna</Text>
-        {' your Questions:-'}
-      </Text>
+  
       <View style={styles.inputContainer}>
         <TextInput
           style={styles.input}
@@ -29,9 +31,17 @@ function AskQuestForm({handleAskQuestion,handleRecQuestion}) {
           </TouchableOpacity>
         )}
       </View>
+      <View style={styles.buttonGrp}>
       <TouchableOpacity style={styles.askButton} onPress={() => {handleAskQuestion(question),setQuestion("")}}>
         <Text style={styles.askButtonText}>Ask Question</Text>
       </TouchableOpacity>
+      <TouchableOpacity style={styles.chatHistory} onPress={() => {handleShowChatHistory()}}>
+      <View style={styles.iconContainer}>
+    <MaterialIcons name="history" size={24} color="white" style={styles.icon} />
+    <Text style={styles.askButtonText}>Chat History</Text>
+  </View>
+      </TouchableOpacity>
+      </View>
     </View>
   );
 }
@@ -58,6 +68,12 @@ const styles = StyleSheet.create({
   inputContainer: {
     flexDirection: 'row',
     alignItems: 'center',
+    width: '100%',
+  },
+  buttonGrp: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    width: '40%',
   },
   input: {
     backgroundColor: '#fff',
@@ -93,10 +109,27 @@ const styles = StyleSheet.create({
     padding: 10,
     alignItems: 'center',
     width: '100%',
+    marginRight: 10,
+  },
+  chatHistory: {
+    backgroundColor: 'grey',
+    borderRadius: 20,
+    padding: 10,
+    alignItems: 'center',
+    width: '100%',
+    marginLeft: 10,
   },
   askButtonText: {
     color: '#fff',
     fontWeight: 'bold',
     fontSize: 16,
+  },
+  iconContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  
+  icon: {
+    marginRight: 5,
   },
 });

@@ -14,7 +14,7 @@ const startUrl = "https://merekisan.in"
 // const startUrl = "http://192.168.1.12:2040"
 // const startUrl = "http://192.168.1.10:2040"
 
-const InputBox = ({ godLink,chatId,question,isRec }) => {
+const InputBox = ({ godLink,chatId,question,isRec,isHistory }) => {
 const { messages } = useContext(MessageContext);
 const godMessage = messages[chatId];
 
@@ -42,11 +42,15 @@ const godMessage = messages[chatId];
 
   useEffect(() => {
     try {
-        if(isRec){
+      if(isHistory){
+// DO Nothing
+      }
+       else if(isRec){
           setIsFirstRec(true)
         }
         else
-       { const randomId = generateRandomMessageId();
+       { 
+        const randomId = generateRandomMessageId();
         const message = {
           id: randomId,
           text: question,

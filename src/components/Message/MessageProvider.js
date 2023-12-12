@@ -16,6 +16,7 @@ const messageReducer = (state, action) => {
         messages: {
           ...state.messages,
           [chatId]: [ message, ...(state.messages[chatId] || [])],
+          
         },
       };
     case 'SET_MESSAGES':

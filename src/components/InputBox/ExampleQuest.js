@@ -5,6 +5,7 @@ import {engArray,hinArray} from './QuestArray';
 import { useTranslation } from 'react-i18next';
 
 const ExampleQuest = ({onSend,setNewMessage}) => {
+const [showExamp, setShowExamp] = useState(true);
 const [isArrowUp, setIsArrowUp] = useState(false);
 const [messages, setMessages] = useState(engArray);  
 const [exmpHeader, setExmpHeader] = useState("Example Questions");  
@@ -22,46 +23,52 @@ if(LanguageCode == 'hi-IN'){
   }, [LanguageCode]);
   return (
     <>
-        <View style={styles.header}>
-          <Text style={styles.headerText}>{exmpHeader}</Text>
-       {!isArrowUp ? (  <TouchableOpacity onPress={() => setIsArrowUp(true)}>
-              <Ionicons name="arrow-up" size={24} color="green" style={styles.icon} />
-            </TouchableOpacity>):
-             ( <TouchableOpacity onPress={() => setIsArrowUp(false)}>
-              <Ionicons name="arrow-down" size={24} color="green" style={styles.icon} />
-            </TouchableOpacity>)}
-
-            <Ionicons name="md-close" size={24} color="red" style={styles.icon} />
-
-          </View>
-      {isArrowUp ? (
-        <>
-      
-          <ScrollView style={styles.allMessagesContainer}>
+    {(showExamp)? 
+      ( <>
+      <View style={styles.header}>
+       <Text style={styles.headerText}>{exmpHeader}</Text>
+          {!isArrowUp ? (  <TouchableOpacity onPress={() => setIsArrowUp(true)}>
+               <Ionicons name="arrow-up" size={24} color="green" style={styles.icon} />
+               </TouchableOpacity>):
+                ( <TouchableOpacity onPress={() => setIsArrowUp(false)}>
+                 <Ionicons name="arrow-down" size={24} color="green" style={styles.icon} />
+               </TouchableOpacity>)}
+               <TouchableOpacity onPress={() => setShowExamp(false)}>
+               <Ionicons name="md-close" size={24} color="red" style={styles.icon} />
+               </TouchableOpacity>
+             </View>
+         {isArrowUp ? (
+           <>
          
-            {messages?.map((message) => (
-              <Text key={message.id} style={styles.question}>
-                {message.text}
-              </Text>
-            ))}
-          </ScrollView> 
-        </>
-      ) : (
-        <View style={styles.container}>
-        <ScrollView
-          horizontal={true}
-          style={styles.horizontalScrollContainer}
-          contentContainerStyle={styles.horizontalContentContainer}
-        >
-          {messages?.map((message) => (
-            <TouchableOpacity key={message.id} style={styles.messageContainer} onPress={() => sendMessage(message.text)}>
-              <Text style={styles.question}>{message.text}</Text>
-            </TouchableOpacity>
-          ))}
-        </ScrollView>
-      </View>
-      )}
-    </>
+             <ScrollView style={styles.allMessagesContainer}>
+            
+               {messages?.map((message) => (
+                 <Text key={message.id} style={styles.question}>
+                   {message.text}
+                 </Text>
+               ))}
+             </ScrollView> 
+           </>
+         ) : (
+           <View style={styles.container}>
+           <ScrollView
+             horizontal={true}
+             style={styles.horizontalScrollContainer}
+             contentContainerStyle={styles.horizontalContentContainer}
+           >
+             {messages?.map((message) => (
+               <TouchableOpacity key={message.id} style={styles.messageContainer} onPress={() => sendMessage(message.text)}>
+                 <Text style={styles.question}>{message.text}</Text>
+               </TouchableOpacity>
+             ))}
+           </ScrollView>
+         </View>
+         )}
+       </>
+       ):
+       (<></>)
+      }
+  </>
   );
 };
 const styles = StyleSheet.create({

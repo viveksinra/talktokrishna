@@ -1,21 +1,28 @@
-import React from 'react';
+import React, {useState,useEffect} from 'react';
 import { View, StyleSheet, ScrollView } from 'react-native';
 import QuestionCard from './questionCard'; // Make sure to import the QuestionCard component
+import {engArray,hinArray} from './../InputBox/QuestArray';
+import { useTranslation } from 'react-i18next';
 
 const SampleQuestionList = ({handleAskQuestion}) => {
-  const questions = [
-    "How can I overcome my attachment to material possessions and wealth?",
-    "How can I develop a deeper sense of wisdom and understanding?",
-    "Another question goes here...",
-    // Add more questions as needed
-  ];
+
+  const [messages, setMessages] = useState(engArray);  
+const { t } = useTranslation();
+const LanguageCode = t('LanguageCode') 
+useEffect(() => {
+  if(LanguageCode == 'hi-IN'){
+      setMessages(hinArray)
+  }else{
+    setMessages(engArray)
+  }
+    }, [LanguageCode]);
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      {questions.map((question, index) => (
+      {messages?.map((message) => (
         <QuestionCard
-          key={index}
-          question={question}
-          handleAskQuestion={() => handleAskQuestion(question)}
+          key={message.id}
+          question={message.text}
+          handleAskQuestion={() => handleAskQuestion(message.text)}
         />
       ))}
     </ScrollView>
