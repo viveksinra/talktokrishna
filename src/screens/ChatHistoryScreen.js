@@ -1,9 +1,10 @@
-import { View, Text, StyleSheet, ImageBackground } from 'react-native';
+import { View, Text, StyleSheet, ImageBackground, TouchableOpacity } from 'react-native';
 import React, { useContext } from 'react';
 import { FlatList } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { MessageContext } from '../components/Message/MessageProvider';
 import ChatHistoryItem from '../components/ChatHistoryItem';
+import NoChatHistory from '../components/ChatHistoryItem/NoChatHistory';
 import enChats from '../../assets/data/enChats.json';
 import lastMsg from '../../assets/data/lastMsg.json';
 const image = { uri: "https://images.unsplash.com/photo-1541140134513-85a161dc4a00?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Z3JleSUyMHRleHR1cmV8ZW58MHx8MHx8fDA%3D" };
@@ -54,9 +55,15 @@ const ChatHistoryScreen = () => {
   const foGods = JSON.parse(gods);
   const mergedData = sortMessagesByCreatedAt(mergeArrays(foGods, lastMsg));
 
+  if (mergedData.length === 0) {
+    return (
+    <NoChatHistory />
+    );
+  }
+
   return (
     <ImageBackground
-      source={image} // Update the path accordingly
+      source={image}
       style={styles.backgroundImage}
     >
       <View style={styles.container}>
@@ -78,6 +85,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     // Add more styles as needed
   },
+  
 });
 
 export default ChatHistoryScreen;
