@@ -8,6 +8,7 @@ import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import { Ionicons } from '@expo/vector-icons';
 import duration from 'dayjs/plugin/duration';
+import ActionButton from './actionButton';
 
 dayjs.extend(relativeTime);
 dayjs.extend(duration);
@@ -28,10 +29,6 @@ const Message = ({ message }) => {
   const allUserColor = [
     ['#ff6e7f', '#bfe9ff'],
     ['#ee9ca7', '#ffdde1'],
-
-
-    ['#ecf0f1', '#95a5a6'],
-
 ]
   const allGodColor = [
     ['#ffafbd', '#ffc3a0'],
@@ -151,6 +148,7 @@ const Message = ({ message }) => {
         <Text style={styles.text}>{message.text}</Text>
       )}
       <Text style={styles.time}>{dayjs(message.createdAt).fromNow(true)}</Text>
+    {/* <ActionButton /> */}
     </AnimatedLinearGradient>
   );
 };
