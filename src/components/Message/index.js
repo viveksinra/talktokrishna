@@ -25,16 +25,18 @@ const Message = ({ message }) => {
   const [progress, setProgress] = useState(0);
   const [elapsedTime, setElapsedTime] = useState(0);
   const [lgColor,setLgColor] = useState(['#88fcb8', '#00b894'])
-  const allLgColor = [
+  const allUserColor = [
     ['#ff6e7f', '#bfe9ff'],
     ['#ee9ca7', '#ffdde1'],
-    ['#88fcb8', '#00b894'],
-    ['#ffafbd', '#ffc3a0'],
-    ['#16a085', '#f4d03f'],
-    ['#e74c3c', '#2980b9'],
+
+
     ['#ecf0f1', '#95a5a6'],
-    ['#d35400', '#f39c12'],
-    ['#27ae60', '#e74c3c'],
+
+]
+  const allGodColor = [
+    ['#ffafbd', '#ffc3a0'],
+    ['#88fcb8', '#00b894'],
+    ['#FFD580', '#f39c12'],
 ]
 
 
@@ -95,11 +97,18 @@ const Message = ({ message }) => {
     };
   }, []);
   useEffect(() => {
-    const randomIndex = Math.floor(Math.random() * allLgColor?.length);
-    setLgColor(allLgColor[randomIndex]);
+    const randomUserIndex = Math.floor(Math.random() * allUserColor?.length);
+    const randomGodIndex = Math.floor(Math.random() * allUserColor?.length);
+    if(isMyMessage()){
+      // User color
+      setLgColor(allUserColor[randomUserIndex]);
+    }else{
+      // God color
+      setLgColor(allGodColor[randomGodIndex]);
+    }
   }, []);
 
-  const gradientColors = isMyMessage() ? lgColor : ['#ffffff', '#dfe6e9'];
+  const gradientColors = isMyMessage() ? lgColor : lgColor;
   const gradientLocations = [0, 1];
 
   return (
