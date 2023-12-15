@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {StyleSheet, Text, TextInput, TouchableOpacity, View, ImageBackground, Image} from 'react-native';
 import MobileCom from '../authComponent/MobileLogin/MobileCom';
 import OtpCom from '../authComponent/MobileLogin/OtpCom';
+import TermPopup from '../authComponent/MobileLogin/TermPopup';
 const image = { uri: "https://www.onlygfx.com/wp-content/uploads/2021/04/white-triangle-pattern-seamless-background-2.jpg" };
 
 const MobileLoginScreen = () => {
@@ -35,10 +36,7 @@ const MobileLoginScreen = () => {
    />
    </>
     )}
-
-    <Text style={styles.termsText}>
-      By signing up you agree to our Terms of use and Privacy Policy
-    </Text>
+    <TermPopup /> 
   </View>
   <Image
         style={styles.image}
@@ -62,12 +60,7 @@ const styles = StyleSheet.create({
     margin:10,
     marginTop:100
   },
-  termsText: {
-    color: 'rgba(0, 0, 0, 0.6)', // changed from light gray to dark gray
-    fontSize: 15,
-    fontWeight: '400',
-    marginTop: 16,
-  },
+
 
 
 });

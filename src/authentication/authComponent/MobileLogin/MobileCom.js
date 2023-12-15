@@ -39,19 +39,7 @@ const MobileCom = ({setStep,phone,setPhone}) => {
 }
 
 const styles = StyleSheet.create({
-    imageBG: {
-      flex: 1,
-      resizeMode: "cover",
-    },
-    image: {
-      width: 350, // Adjust the width as needed
-      height: 350, // Adjust the height as needed
-      resizeMode: 'cover', // You can change the resizeMode based on your preference
-    },
-    container:{
-      margin:10,
-      marginTop:100
-    },
+   
     title: {
       color: '#000000', // changed from white to black
       fontSize: 28,
@@ -97,9 +85,9 @@ const styles = StyleSheet.create({
     },
     button: {
       backgroundColor: 'rgb(255, 165, 0)', // changed from purple to orange
-      borderRadius: 8,
+      borderRadius:12,
       height: 48,
-      width: '100%',
+      width: '50%',
       alignItems: 'center',
       justifyContent: 'center',
       marginBottom: 16,
@@ -116,11 +104,6 @@ const styles = StyleSheet.create({
       fontWeight: '400',
       textDecorationLine: 'underline',
     },
-    termsText: {
-      color: 'rgba(0, 0, 0, 0.6)', // changed from light gray to dark gray
-      fontSize: 15,
-      fontWeight: '400',
-      marginTop: 16,
-    },
+
   });
 export default MobileCom;
