@@ -1,27 +1,46 @@
 import React, {useState} from 'react';
 import {StyleSheet, Text, TextInput, TouchableOpacity, View, ImageBackground, Image} from 'react-native';
 const image = { uri: "https://www.onlygfx.com/wp-content/uploads/2021/04/white-triangle-pattern-seamless-background-2.jpg" };
+import axios from 'axios';
 
-const MobileCom = ({setStep,phone,setPhone}) => {
+
+const MobileCom = ({setStep,mobileNo,setMobileNo}) => {
     const handleSignUp = () => {
-        // send phone number to server and request OTP
-        setStep(2);
+        if(mobileNo?.length == 10){
+          sendOTP(mobileNo)
+        setStep(2);} else {
+          alert("Invalid mobileNo number");
+        }
       };
+
+      const sendOTP = async (mobileNo) => {
+        try {
+          const response = await axios.post('https://merekisan.in/api/myApp/api/appAuth/user/sendotp', {
+            mobileNo: mobileNo,
+          });
+          // Handle the response, e.g., show a message to the user
+          console.log(response.data);
+        } catch (error) {
+          // Handle errors, e.g., show an error message
+          console.error(error);
+        }
+      };
+
     return (
         <>
         <View>
         <Text style={styles.title}>Log in / Sign up</Text>
         <Text style={styles.subtitle}>
-          Please provide your phone number to continue
+          Please provide your mobileNo number to continue
         </Text>
         <View style={styles.form}>
           <Text style={styles.label}>+91</Text>
           <TextInput
             style={styles.input}
-            placeholder="Phone number"
+            placeholder="MobileNo number"
             keyboardType="phone-pad"
-            value={phone}
-            onChangeText={setPhone}
+            value={mobileNo}
+            onChangeText={setMobileNo}
             maxLength={10}
           />
         </View>
@@ -50,8 +69,7 @@ const styles = StyleSheet.create({
       color: 'rgba(0, 0, 0, 0.6)', // changed from light gray to dark gray
       fontSize: 17,
       fontWeight: '400',
-      marginBottom: 12,
-  
+      marginBottom: 12,  
     },
     form: {
       backgroundColor: 'white',

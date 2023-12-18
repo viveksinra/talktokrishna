@@ -6,14 +6,9 @@ import TermPopup from '../authComponent/MobileLogin/TermPopup';
 const image = { uri: "https://www.onlygfx.com/wp-content/uploads/2021/04/white-triangle-pattern-seamless-background-2.jpg" };
 
 const MobileLoginScreen = () => {
-  const [phone, setPhone] = useState('');
+  const [mobileNo, setMobileNo] = useState('');
   const [otp, setOtp] = useState('');
   const [step, setStep] = useState(1);
-
-
-
-
-
   return (
     <ImageBackground source={image} style={styles.imageBG}>
       <View style={styles.container}>
@@ -21,8 +16,8 @@ const MobileLoginScreen = () => {
    <>
    <MobileCom
    setStep = {setStep}
-   phone= {phone}
-   setPhone = {setPhone}
+   mobileNo= {mobileNo}
+   setMobileNo = {setMobileNo}
    />
    </>
     ) : (
@@ -31,7 +26,7 @@ const MobileLoginScreen = () => {
       setStep = {setStep}
       otp= {otp}
       setOtp = {setOtp}
-   phone= {phone}
+   mobileNo= {mobileNo}
 
    />
    </>

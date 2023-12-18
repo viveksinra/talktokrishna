@@ -1,13 +1,45 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {StyleSheet, Text, TextInput, TouchableOpacity, View, ImageBackground, Image} from 'react-native';
+import axios from 'axios';
 
-const OtpCom = ({setStep,otp,setOtp,phone}) => {
+import * as Keychain from 'react-native-keychain';
+const OtpCom = ({setStep,otp,setOtp,mobileNo}) => {
+
+  const storeToken = async (token) => {
+    try {
+      await Keychain.setGenericPassword('authToken', token);
+      // Handle success, e.g., navigate to the authenticated screen
+    } catch (error) {
+      // Handle errors, e.g., show an error message
+      console.error(error);
+    }
+  };
+
+  const verifyOTP = async (mobileNumber, otp) => {
+    try {
+      const response = await axios.post('https://merekisan.in/api/myApp/api/appAuth/user/verifyotp', {
+        mobileNumber: mobileNumber,
+        otp: otp,
+      });
+      // Handle the response, e.g., store the Bearer Token
+      const token = response.data.token;
+      // Store the token securely
+      console.log(response.data.token);
+      // await storeToken(token);
+    } catch (error) {
+      // Handle errors, e.g., show an error message
+      console.error(error);
+    }
+  };
+  
+
+
     const handleVerify = () => {
-        // verify OTP with server and login
+      verifyOTP(mobileNo,otp)
       };
     
       const handleResend = () => {
-        // resend OTP to phone number
+        // resend OTP to mobileNo number
       };
     return (
         <>
@@ -19,10 +51,10 @@ const OtpCom = ({setStep,otp,setOtp,phone}) => {
          </Text>
          <TouchableOpacity onPress={() => setStep(1)} style={styles.rowView}>
          <Text >Edit </Text>
-         <Text style={styles.resendText}> ✏️{phone}</Text>
+         <Text style={styles.resendText}> ✏️{mobileNo}</Text>
        </TouchableOpacity>
          <View style={styles.form}>
-           <Text style={styles.label}>Code</Text>
+           <Text style={styles.label}>OTP</Text>
            <TextInput
              style={styles.input}
              placeholder="Enter OTP"
