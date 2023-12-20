@@ -7,6 +7,7 @@ import LanguageSelector from './LanguageSelector';
 import ProfileButton from './ProfileButton';
 import DeleteChatButton from './DeleteChatButton';
 import ShareCom from './shareCom';
+import LogOutButton from './LogOutButton';
 const handleProfileUpdate = () => {
   // Handle navigation or any logic for updating the profile
   // You can navigate to a new page using navigation library like React Navigation
@@ -20,6 +21,7 @@ const App = () => {
       <LanguageSelector showIconOnly={false}  />
       <DeleteChatButton />
       <ShareCom />
+      <LogOutButton />
     </LinearGradient>
   );
 };

@@ -1,16 +1,24 @@
-import React, {useState} from 'react';
+import React, {useState,useContext} from 'react';
 import {StyleSheet, Text, TextInput, TouchableOpacity, View, ImageBackground, Image} from 'react-native';
 import axios from 'axios';
 
-import * as Keychain from 'react-native-keychain';
+import * as SecureStore from 'expo-secure-store';
+import { useNavigation } from '@react-navigation/native';
+import { AppContext } from '../../../../context/appContext';
+
 const OtpCom = ({setStep,otp,setOtp,mobileNo}) => {
+  const navigation = useNavigation();
+  const { setIsSignedIn } = useContext(AppContext);
+
 
   const storeToken = async (token) => {
     try {
-      await Keychain.setGenericPassword('authToken', token);
-      // Handle success, e.g., navigate to the authenticated screen
+      await SecureStore.setItemAsync('authToken', token);
+        setIsSignedIn(true);
+
     } catch (error) {
       // Handle errors, e.g., show an error message
+      const value = await SecureStore.getItemAsync('key');
       console.error(error);
     }
   };
@@ -25,7 +33,7 @@ const OtpCom = ({setStep,otp,setOtp,mobileNo}) => {
       const token = response.data.token;
       // Store the token securely
       console.log(response.data.token);
-      // await storeToken(token);
+      await storeToken(token);
     } catch (error) {
       // Handle errors, e.g., show an error message
       console.error(error);

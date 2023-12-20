@@ -4,14 +4,17 @@ import { StyleSheet, Text, View } from 'react-native';
 import Navigator from './src/navigation';
 import i18n from './src/lan/i18n'
 import { MessageProvider } from './src/components/Message/MessageProvider';
+import { AppContextProvider } from './context/appContext';
 
 export default function App() {
   return (
     <MessageProvider>
     <View style={styles.container}>
-      {/* <ChatsScreens /> */}
-      {/* <OneChatScreen /> */}
+    <AppContextProvider>
+
       <Navigator />
+      </AppContextProvider>
+
       <StatusBar style="auto" />
     </View>
     </MessageProvider>

@@ -1,42 +1,53 @@
-// Navigator.js
-import React, { useEffect, useState } from 'react';
+import React, { useState,useEffect, useMemo, useContext } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createStackNavigator } from '@react-navigation/stack';
 import AuthenticatedNavigator from './AuthenticatedNavigator';
-import MobileLoginScreen from '../authentication/authScreen/mobileLoginScreen';
+import PublicNavigator from './PublicNavigator';
+import * as SecureStore from 'expo-secure-store';
 
-const Stack = createNativeStackNavigator();
+const Stack = createStackNavigator();
+import { AppContext } from '../../context/appContext';
+
 
 const Navigator = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-
+  const { isSignedIn, setIsSignedIn } = useContext(AppContext);
   useEffect(() => {
     // Check the authentication status and update the state accordingly
-    // You may use AsyncStorage, context, or any other method for authentication check
-    // For demonstration purposes, let's assume isAuthenticated is set to true when the user is authenticated.
-    // Replace the following line with your actual authentication check.
-    setIsAuthenticated(false);
+    SecureStore.getItemAsync('authToken')
+      .then(value => {
+        console.log({value, 'authToken':!!value});
+        setIsSignedIn(!!value);
+      })
+      .catch(error => {
+        console.error('Error retrieving authToken:', error);
+      });
   }, []);
 
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        {isAuthenticated ? (
-          <Stack.Screen
+      <NavigationContainer>
+        <Stack.Navigator>
+          {!isSignedIn ? (
+               <Stack.Screen
+               name="PublicNavigator"
+               component={PublicNavigator}
+               options={{ headerShown: false }}
+             />
+             
+          ) : (
+            <Stack.Screen
             name="Authenticated"
             component={AuthenticatedNavigator}
             options={{ headerShown: false }}
           />
-        ) : (
-          <Stack.Screen
-            name="Home"
-            component={MobileLoginScreen}
-            options={{ headerShown: false }}
-          />
-        )}
-      </Stack.Navigator>
-    </NavigationContainer>
+          )}
+        </Stack.Navigator>
+      </NavigationContainer>
   );
-};
+}
 
 export default Navigator;
+
+// function LoginScreen() {
+//   const { setIsSignedIn } = useContext(AppContext);
+//   // After successful login, setIsSignedIn to true
+// }
