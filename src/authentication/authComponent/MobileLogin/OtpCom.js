@@ -3,11 +3,9 @@ import {StyleSheet, Text, TextInput, TouchableOpacity, View, ImageBackground, Im
 import axios from 'axios';
 
 import * as SecureStore from 'expo-secure-store';
-import { useNavigation } from '@react-navigation/native';
 import { AppContext } from '../../../../context/appContext';
 
 const OtpCom = ({setStep,otp,setOtp,mobileNo}) => {
-  const navigation = useNavigation();
   const { setIsSignedIn } = useContext(AppContext);
 
 
@@ -18,7 +16,14 @@ const OtpCom = ({setStep,otp,setOtp,mobileNo}) => {
 
     } catch (error) {
       // Handle errors, e.g., show an error message
-      const value = await SecureStore.getItemAsync('key');
+    
+      console.error(error);
+    }
+  };
+  const storeMobile = async (mobileNo) => {
+    try {
+      await SecureStore.setItemAsync('mobileNo', mobileNo);
+    } catch (error) {
       console.error(error);
     }
   };
@@ -34,6 +39,7 @@ const OtpCom = ({setStep,otp,setOtp,mobileNo}) => {
       // Store the token securely
       console.log(response.data.token);
       await storeToken(token);
+      await storeMobile(token);
     } catch (error) {
       // Handle errors, e.g., show an error message
       console.error(error);

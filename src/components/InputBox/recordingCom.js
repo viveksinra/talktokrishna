@@ -99,10 +99,9 @@ const RecordingComponent = ({isFirstRec,setIsFirstRec,setIsGettingResponse,godLi
           messageType:"audioAndText",
           lan:LanguageCode,
           createdAt: new Date(),
-          user: {
-            id: 'userId',
-            name: 'Your Name',
-          },
+          userType:'user',
+          godLink:"",
+  
         };
         console.log('Recording uploaded:');
 

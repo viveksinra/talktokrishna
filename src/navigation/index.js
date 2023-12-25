@@ -1,4 +1,4 @@
-import React, { useState,useEffect, useMemo, useContext } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import AuthenticatedNavigator from './AuthenticatedNavigator';
@@ -15,7 +15,6 @@ const Navigator = () => {
     // Check the authentication status and update the state accordingly
     SecureStore.getItemAsync('authToken')
       .then(value => {
-        console.log({value, 'authToken':!!value});
         setIsSignedIn(!!value);
       })
       .catch(error => {
@@ -47,7 +46,3 @@ const Navigator = () => {
 
 export default Navigator;
 
-// function LoginScreen() {
-//   const { setIsSignedIn } = useContext(AppContext);
-//   // After successful login, setIsSignedIn to true
-// }

@@ -1,8 +1,6 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {StyleSheet, Text, TextInput, TouchableOpacity, View, ImageBackground, Image} from 'react-native';
-const image = { uri: "https://www.onlygfx.com/wp-content/uploads/2021/04/white-triangle-pattern-seamless-background-2.jpg" };
 import axios from 'axios';
-
 
 const MobileCom = ({setStep,mobileNo,setMobileNo}) => {
     const handleSignUp = () => {

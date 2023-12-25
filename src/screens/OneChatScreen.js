@@ -19,10 +19,6 @@ const manyImg = [
   { uri: "https://th.bing.com/th/id/OIG.95i6XaOtwNFA8NgE.gps?pid=ImgGn" },
   { uri: "https://th.bing.com/th/id/OIG.TwKa0CBHpCAib5k1tiK7?pid=ImgGn" },
   { uri: "https://i.pinimg.com/originals/2f/53/cb/2f53cbf3699aff9176cf30dae34c363e.jpg" },
-  { uri: "https://pm1.narvii.com/7607/991bf58cc718ca5921c4685101c4697e7c6694d0r1-595-804v2_hq.jpg" },
-  { uri: "https://s-media-cache-ak0.pinimg.com/736x/42/b6/32/42b632665bdd7711af471c4eccd06c4b--hindu-deities-hinduism.jpg" },
-  { uri: "https://i.pinimg.com/originals/a3/86/fe/a386fe7332efd17377682adace8b8381.jpg" },
-  { uri: "https://i.pinimg.com/736x/b4/28/ad/b428ad0e9b0506ec59c722c02d2e3a04--krishna-art-hindu.jpg" },
   { uri: "https://th.bing.com/th/id/OIG.RqIuIYMA_Z_oee._Rq1O?pid=ImgGn" },
   { uri: "https://th.bing.com/th/id/OIG.P.umNV12i1Nj5rzpqcfw?pid=ImgGn" },
   { uri: "https://th.bing.com/th/id/OIG.FpySaM_U2pbi9Gm2Jx_r?pid=ImgGn" },
@@ -110,13 +106,13 @@ const OneChatScreen = () => {
   return (
     <View style={styles.container}>
       <ImageBackground source={bg} style={styles.background}>
-        <FlatList
-          data={messages[chatId]}
-          renderItem={({ item }) => <Message message={item} key={item.id} />}
-          keyExtractor={(item) => item.id}
-          style={styles.list}
-          inverted
-        />
+      <FlatList
+  data={messages[chatId] || []}
+  renderItem={({ item }) => (item && item.id ? <Message message={item} key={item.id} /> : null)}
+  keyExtractor={(item) => (item && item.id ? item.id.toString() : null)}
+  style={styles.list}
+  inverted
+/>
         <InputBox godLink={godLink} chatId={chatId} question={question} isRec={isRec} isHistory={isHistory} />
       </ImageBackground>
     </View>

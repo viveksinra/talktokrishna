@@ -4,14 +4,15 @@ import { MessageContext } from './../../../src/components/Message/MessageProvide
 import { useTranslation } from 'react-i18next';
 import LottieView from 'lottie-react-native';
 import { ActivityIndicator } from 'react-native';
+import * as SecureStore from 'expo-secure-store';
 
 import axios from 'axios'; // Import the axios library
 import { generateRandomMessageId } from '../../utils/randomId';
 import RecordingComponent from './recordingCom';
 import TextInputCom from './textInputCom';
 import ExampleQuest from './ExampleQuest';
-const startUrl = "https://merekisan.in"
-// const startUrl = "http://192.168.1.12:2040"
+// const startUrl = "https://merekisan.in"
+const startUrl = "http://192.168.1.13:2040"
 // const startUrl = "http://192.168.1.10:2040"
 
 const InputBox = ({ godLink,chatId,question,isRec,isHistory }) => {
@@ -29,7 +30,7 @@ const godMessage = messages[chatId];
   // Set a timeout to reset the state after 1 minute (60000 milliseconds)
   const resetStateTimer = setTimeout(() => {
     setIsGettingResponse(false);
-  }, 150);
+  }, 60000);
 
   useEffect(() => {
     // Audio.requestPermissionsAsync();
@@ -58,10 +59,9 @@ const godMessage = messages[chatId];
           messageType:"text",
           lan:LanguageCode,
           createdAt: new Date(),
-          user: {
-            id: 'userId',
-            name: 'Your Name',
-          },
+          userType:'user',
+          godLink:"",
+                
         };
         sendAndGetResponse(godLink,chatId, message);
         setNewMessage('');
@@ -76,10 +76,19 @@ const godMessage = messages[chatId];
     setIsGettingResponse(true)
     try{
       addMessage(chatId, message);
-      let url = `${startUrl}/api/other/ttg/callAiGod/getResponse`
+      let url = `${startUrl}/api/myApp/api/ttg/getAiResponse/getResponse`
       const prevMsgs = godMessage?.slice(-4);
+// Retrieve the token from SecureStore
 
-      const response = await axios.post(url, {godLink,message,prevMsgs})
+let token = await SecureStore.getItemAsync('authToken');
+// Set the Authorization header for the request
+      const response = await axios.post(url, {chatId,godLink,message,prevMsgs},
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': token,
+          },
+        })
         let myRes = response.data
         if(myRes.variant == "success"){
           setIsGettingResponse(false)
@@ -94,7 +103,6 @@ const godMessage = messages[chatId];
   }; 
 
   const onSend = () => {
-
     if ( newMessage.trim()) {
       const randomId = generateRandomMessageId();
       const message = {
@@ -104,10 +112,9 @@ const godMessage = messages[chatId];
         messageType:"text",
         lan:LanguageCode,
         createdAt: new Date(),
-        user: {
-          id: 'userId',
-          name: 'Your Name',
-        },
+        userType:'user',
+        godLink:"",
+     
       };
       sendAndGetResponse(godLink,chatId, message);
       setNewMessage('');

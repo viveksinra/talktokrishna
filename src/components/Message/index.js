@@ -17,7 +17,7 @@ const AnimatedLinearGradient = Animated.createAnimatedComponent(LinearGradient);
 
 const Message = ({ message }) => {
   const isMyMessage = () => {
-    return message.user.id === 'userId';
+    return message.userType === 'user';
   };
 
   const [audioDuration, setAudioDuration] = useState(0);
