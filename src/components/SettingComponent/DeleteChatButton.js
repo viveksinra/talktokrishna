@@ -41,10 +41,10 @@ const DeleteChatButton = () => {
           <Text style={styles.modalTitle}>{t('delete.confirm1')}</Text>
           <Text style={styles.modalText}>{t('delete.confirm2')}</Text>
           <TouchableOpacity style={styles.modalButton} onPress={handleDelete}>
-            <Text style={styles.modalButtonText}>Delete</Text>
+            <Text style={styles.modalButtonText}>{t('delete.confirm3')}</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.modalButton} onPress={() => setDeleteModalVisible(false)}>
-            <Text style={styles.modalButtonText}>Cancel</Text>
+          <TouchableOpacity style={styles.cancelButton} onPress={() => setDeleteModalVisible(false)}>
+            <Text style={styles.modalButtonText}>{t('delete.confirm4')}</Text>
           </TouchableOpacity>
         </View>
       </Modal>
@@ -91,8 +91,15 @@ const styles = {
       },
       modalButton: {
         paddingVertical: 10,
-        paddingHorizontal: 20,
+        paddingHorizontal: 30,
         backgroundColor: '#007AFF',
+        borderRadius: 10,
+        marginBottom: 10,
+      },
+      cancelButton: {
+        paddingVertical: 10,
+        paddingHorizontal: 30,
+        backgroundColor: '#FF0000',
         borderRadius: 5,
         marginBottom: 10,
       },
@@ -100,5 +107,6 @@ const styles = {
         color: 'white',
         fontWeight: 'bold',
         textAlign: 'center',
+        fontSize: 20,
       },
 };

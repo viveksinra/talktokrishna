@@ -18,15 +18,15 @@ const LogOutButton = () => {
 
     try {
         Alert.alert(
-            'Log Out Confirmation',
-            'Are you sure you want to Log Out?',
+            t('logout.two'),
+            t('logout.three'),
             [
               {
-                text: 'Cancel',
+                text: t('logout.four'),
                 style: 'cancel',
               },
               {
-                text: 'LogOut',
+                text: t("logout.one"),
                 onPress: async() => {
                     await SecureStore.deleteItemAsync('authToken');
                     handleDeleteAllChat();
@@ -62,7 +62,7 @@ const LogOutButton = () => {
         <View style={styles.buttonIconContainer}>
           <Ionicons name="trash-outline" size={24} color="red" />
         </View>
-        <Text style={styles.buttonText}>Logout</Text>
+        <Text style={styles.buttonText}>{t("logout.one")}</Text>
       </View>
     </TouchableOpacity>
   );

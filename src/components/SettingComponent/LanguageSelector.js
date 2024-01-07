@@ -176,13 +176,14 @@ selectnavText: {
   modalCloseButton: {
     marginTop: 20,
     paddingVertical: 15,
-    backgroundColor: '#f1f1f1',
+    backgroundColor: '#FF0000',
     alignItems: 'center',
+    borderRadius:30
   },
   modalCloseButtonText: {
-    fontSize: 18,
+    fontSize: 22,
     fontWeight: 'bold',
-    color: '#333',
+    color: '#fff',
   },
 });
 

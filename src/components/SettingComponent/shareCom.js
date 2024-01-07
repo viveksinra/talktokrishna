@@ -50,9 +50,9 @@ const ShareCom = () => {
 
   return (
     <View style={styles.container}>
-      {renderSharingOption('share-outline', 'black', 'Share App Link', handleShareLink)}
-      {renderSharingOption('logo-whatsapp', 'green', 'Share on WhatsApp', handleShareWhatsApp)}
-      {renderSharingOption('star-outline', 'black', 'Please Rate Our App', handleRateApp)}
+      {renderSharingOption('share-outline', 'black', t("setting.one"), handleShareLink)}
+      {renderSharingOption('logo-whatsapp', 'green', t("setting.two"), handleShareWhatsApp)}
+      {renderSharingOption('star-outline', 'black', t("setting.three"), handleRateApp)}
     </View>
   );
 };
