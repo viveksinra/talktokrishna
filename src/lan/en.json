@@ -2,6 +2,16 @@
 {
   "translation": {
     "LanguageCode": "en-IN",
+    "Login.one":"Log in / Sign up",
+    "Login.two":"Please provide your Mobile Number to continue",
+    "Login.three":"Mobile Number",
+    "otp.one":"OTP Verification✅",
+    "otp.two":"We have sent you an OTP to verify your Mobile Number",
+    "otp.three":"Edit",
+    "otp.four":"OTP",
+    "otp.five":"Enter OTP",
+    "otp.six":"Verify",
+    "otp.seven":"Didn't receive a code? Resend code",
     "main.one":"Decoding Life's ",
     "main.two":"Puzzlements with Krishna: ",
     "main.three":"More Than 500,000+ Queries Responded",

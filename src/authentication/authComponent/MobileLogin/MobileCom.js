@@ -3,8 +3,11 @@ import {StyleSheet, Text, TextInput, TouchableOpacity, View, ImageBackground, Im
 import axios from 'axios';
 import ContentContext from '../../../Context/ContentContext';
 const startUrl = ContentContext.startUrl
+import { useTranslation } from 'react-i18next';
 
 const MobileCom = ({setStep,mobileNo,setMobileNo}) => {
+  const { t } = useTranslation();
+
     const handleSignUp = () => {
         if(mobileNo?.length == 10){
           sendOTP(mobileNo)
@@ -29,15 +32,15 @@ const MobileCom = ({setStep,mobileNo,setMobileNo}) => {
     return (
         <>
         <View>
-        <Text style={styles.title}>Log in / Sign up</Text>
+        <Text style={styles.title}>{t('Login.one')}</Text>
         <Text style={styles.subtitle}>
-          Please provide your Mobile Number to continue
+          {t('Login.two')}
         </Text>
         <View style={styles.form}>
           <Text style={styles.label}>+91</Text>
           <TextInput
             style={styles.input}
-            placeholder="Mobile Number"
+            placeholder={t('Login.three')}
             keyboardType="phone-pad"
             value={mobileNo}
             onChangeText={setMobileNo}
@@ -49,7 +52,7 @@ const MobileCom = ({setStep,mobileNo,setMobileNo}) => {
        <TouchableOpacity
       style={styles.button}
       onPress={ handleSignUp }>
-      <Text style={styles.buttonText}>{'Login / Sign up'}</Text>
+      <Text style={styles.buttonText}>{t('Login.one')}</Text>
     </TouchableOpacity>
 
        </>

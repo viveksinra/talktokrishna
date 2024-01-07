@@ -4,11 +4,14 @@ import MobileCom from '../authComponent/MobileLogin/MobileCom';
 import OtpCom from '../authComponent/MobileLogin/OtpCom';
 import TermPopup from '../authComponent/MobileLogin/TermPopup';
 const image = { uri: "https://www.onlygfx.com/wp-content/uploads/2021/04/white-triangle-pattern-seamless-background-2.jpg" };
+import { useTranslation } from 'react-i18next';
 
 const MobileLoginScreen = () => {
   const [mobileNo, setMobileNo] = useState('');
   const [otp, setOtp] = useState('');
   const [step, setStep] = useState(1);
+  const { t } = useTranslation();
+
   return (
     <ImageBackground source={image} style={styles.imageBG}>
       <View style={styles.container}>

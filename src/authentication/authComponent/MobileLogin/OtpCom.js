@@ -6,9 +6,11 @@ import * as SecureStore from 'expo-secure-store';
 import { AppContext } from '../../../../context/appContext';
 import ContentContext from '../../../Context/ContentContext';
 const startUrl = ContentContext.startUrl
+import { useTranslation } from 'react-i18next';
 
 const OtpCom = ({setStep,otp,setOtp,mobileNo}) => {
   const { setIsSignedIn } = useContext(AppContext);
+  const { t } = useTranslation();
 
 
   const storeToken = async (token) => {
@@ -61,19 +63,19 @@ const OtpCom = ({setStep,otp,setOtp,mobileNo}) => {
         <>
    
          <View>
-         <Text style={styles.title}>OTP Verification</Text>
+         <Text style={styles.title}>{t('otp.one')}</Text>
          <Text style={styles.subtitle}>
-           We have sent you an OTP to verify your Mobile Number
+         {t('otp.two')}
          </Text>
          <TouchableOpacity onPress={() => setStep(1)} style={styles.rowView}>
-         <Text >Edit </Text>
+         <Text >{t('otp.three')} </Text>
          <Text style={styles.resendText}> ✏️{mobileNo}</Text>
        </TouchableOpacity>
          <View style={styles.form}>
-           <Text style={styles.label}>OTP</Text>
+           <Text style={styles.label}>{t('otp.four')}</Text>
            <TextInput
              style={styles.input}
-             placeholder="Enter OTP"
+             placeholder={t('otp.five')}
              keyboardType="number-pad"
              value={otp}
              onChangeText={setOtp}
@@ -85,10 +87,10 @@ const OtpCom = ({setStep,otp,setOtp,mobileNo}) => {
        <TouchableOpacity
       style={styles.button}
       onPress={ handleVerify}>
-      <Text style={styles.buttonText}>{'Verify'}</Text>
+      <Text style={styles.buttonText}>{t('otp.six')}</Text>
     </TouchableOpacity>
     <TouchableOpacity onPress={handleResend}>
-        <Text style={styles.resendText}>Didn't receive a code? Resend code</Text>
+        <Text style={styles.resendText}>{t('otp.seven')}</Text>
       </TouchableOpacity>
        </>
     )

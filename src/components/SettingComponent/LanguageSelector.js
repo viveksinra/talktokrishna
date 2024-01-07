@@ -37,7 +37,7 @@ const LanguageSelector = ({ showIconOnly }) => {
   <View style={styles.navOptionTextContainer}>
     <Ionicons name="language-outline" size={24} color="black" />
     <Text style={styles.selectnavText}>
-      {t("LanguageCode")=="en-IN"?"English":"Hindi"}
+      {t("LanguageCode")=="en-IN"?"English":"हिंदी"}
     </Text>
     <Ionicons name="chevron-down-outline" size={24} color="black" />
   </View>
@@ -53,7 +53,7 @@ const LanguageSelector = ({ showIconOnly }) => {
             <Text style={styles.optionText}>{t("setting.language")}</Text>
           </View>
           <Text style={styles.selectedText}>
-          {t("LanguageCode")=="en-IN"?"English":"Hindi"}
+          {t("LanguageCode")=="en-IN"?"English":"हिंदी"}
           </Text>
         </View>
       </TouchableOpacity>)}
