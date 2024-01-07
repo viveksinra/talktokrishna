@@ -18,7 +18,6 @@ const DonateComponent = () => {
         const allData = await AsyncStorage.multiGet(allKeys);
 
         // Log the retrieved data
-        console.log('All data from local storage:', allData);
       } catch (error) {
         console.error('Error fetching all data from local storage:', error);
       }
