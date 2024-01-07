@@ -60,7 +60,7 @@ const LanguageSelector = ({ showIconOnly }) => {
 
       <Modal visible={isLanguageModalVisible} animationType="slide">
         <View style={styles.modalContainer}>
-          <Text style={styles.modalTitle}>Select Language</Text>
+          <Text style={styles.modalTitle}>{t('lanPop.one')}</Text>
           {languages.map((language) => (
             <TouchableOpacity
               key={language.code}
@@ -92,7 +92,7 @@ const LanguageSelector = ({ showIconOnly }) => {
             style={styles.modalCloseButton}
             onPress={() => setLanguageModalVisible(false)}
           >
-            <Text style={styles.modalCloseButtonText}>Close</Text>
+            <Text style={styles.modalCloseButtonText}>{t('lanPop.two')}</Text>
           </TouchableOpacity>
         </View>
       </Modal>
