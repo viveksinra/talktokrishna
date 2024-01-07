@@ -3,9 +3,11 @@ import { Text, View, StyleSheet, ImageBackground, TouchableOpacity } from 'react
 import { FontAwesome } from '@expo/vector-icons';
 const image = { uri: "https://images.unsplash.com/photo-1541140134513-85a161dc4a00?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Z3JleSUyMHRleHR1cmV8ZW58MHx8MHx8fDA%3D" };
 import { useNavigation } from '@react-navigation/native';
+import { useTranslation } from 'react-i18next';
 
 const NoChatHistory = () => {
   const navigation = useNavigation();
+  const { t } = useTranslation();
 
   const handleStartChat = () => {
     navigation.goBack();
@@ -18,10 +20,10 @@ const NoChatHistory = () => {
         style={styles.backgroundImage}
       >
         <View style={styles.overlay}>
-          <Text style={styles.noChatText}>No Chat History</Text>
+          <Text style={styles.noChatText}>{t('chatHis.two')}</Text>
           <TouchableOpacity style={styles.refreshButton} onPress={handleStartChat}>
             <FontAwesome name="comments" size={24} color="white" />
-            <Text style={styles.buttonText}>Start New Chat</Text>
+            <Text style={styles.buttonText}>{t('chatHis.three')}</Text>
           </TouchableOpacity>
         </View>
       </ImageBackground>

@@ -5,10 +5,13 @@ import OneChatScreen from '../screens/OneChatScreen';
 import ChatHistoryScreen from '../screens/ChatHistoryScreen';
 import MainTabNavigator from './MainTabNavigator';
 import NotImplementedScreen from '../screens/NotImplementedScreen';
+import { useTranslation } from 'react-i18next';
 
 const Stack = createNativeStackNavigator();
 
 const AuthenticatedNavigator = () => {
+  const { t } = useTranslation();
+
   return (
     <Stack.Navigator>
       <Stack.Screen name="MainTabs" component={MainTabNavigator} options={{ headerShown: false }} />
@@ -16,7 +19,7 @@ const AuthenticatedNavigator = () => {
       <Stack.Screen
         name="ChatHistoryScreen"
         component={ChatHistoryScreen}
-        options={{ title: 'Your Chat History' }}
+        options={{ title: t('chatHis.one') }}
       />
       <Stack.Screen name="Contacts" component={NotImplementedScreen} />
     </Stack.Navigator>

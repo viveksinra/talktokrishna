@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import { View, Text, Modal, TouchableOpacity, ScrollView, StyleSheet } from 'react-native';
 import { AntDesign } from '@expo/vector-icons'; // Make sure to install the necessary icons package
 import TermAndCondition from './TermPolicyText';
+import { useTranslation } from 'react-i18next';
 
 const TermPopup = () => {
   const [isModalVisible, setModalVisible] = useState(false);
+  const { t } = useTranslation();
 
   const toggleModal = () => {
     setModalVisible(!isModalVisible);
@@ -14,7 +16,7 @@ const TermPopup = () => {
     <>
       <TouchableOpacity onPress={toggleModal}>
       <Text style={styles.termsText}>
-      By signing up you agree to our Terms of use and Privacy Policy (Click to View)
+      {t('tAndC')}
     </Text>
       </TouchableOpacity>
 
