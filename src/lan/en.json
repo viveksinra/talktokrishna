@@ -2,6 +2,16 @@
 {
   "translation": {
     "LanguageCode": "en-IN",
+    "main.one":"Decoding Life's ",
+    "main.two":"Puzzlements with Krishna: ",
+    "main.three":"More Than 500,000+ Queries Responded",
+    "secMain.one":"ASK ",
+    "secMain.two":"Divine Krishna ",
+    "secMain.three":"your Questions:-",
+    "askForm.one":"Type Your Question here",
+    "askForm.two":"Ask Question",
+    "askForm.three":"Chat History",
+    "exmQues.one":"Example Questions",
     "recordMessage":"Please speak your message in English..",
     "title":"Welcome",
     "status":"Thanks for Downloading and Using our App",

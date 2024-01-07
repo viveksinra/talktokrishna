@@ -1,17 +1,18 @@
 import 'intl-pluralrules';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet, TouchableOpacity, View, Modal, Text } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useTranslation } from 'react-i18next';
 
-const LanguageSelector = ({showIconOnly}) => {
-  const {t, i18n } = useTranslation();
+const LanguageSelector = ({ showIconOnly }) => {
+  const { t, i18n } = useTranslation();
 
   const languages = [
-    { code: 'hi', name: 'हिंदी' },   
+    { code: 'hi', name: 'हिंदी' },
     { code: 'en', name: 'English' },
   ];
+
   const onceSelectedLanguage = i18n.language || languages[0].code;
   const [selectedLanguage, setSelectedLanguage] = useState(onceSelectedLanguage);
   const [isLanguageModalVisible, setLanguageModalVisible] = useState(false);
@@ -23,6 +24,11 @@ const LanguageSelector = ({showIconOnly}) => {
     // Update the language globally using i18next
     i18n.changeLanguage(languageCode);
   };
+
+  useEffect(() => {
+    // Update the selected language when the language changes from another place
+    setSelectedLanguage(i18n.language);
+  }, [i18n.language]);
 
   return (
     <>

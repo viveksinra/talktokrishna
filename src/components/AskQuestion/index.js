@@ -2,11 +2,13 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
+import { useTranslation } from 'react-i18next';
 
 
 function AskQuestForm({handleAskQuestion,handleRecQuestion}) {
   const [question, setQuestion] = useState("");
   const navigation = useNavigation();
+  const { t } = useTranslation();
 
   function handleShowChatHistory() {
     navigation.navigate('ChatHistoryScreen');
@@ -17,7 +19,7 @@ function AskQuestForm({handleAskQuestion,handleRecQuestion}) {
       <View style={styles.inputContainer}>
         <TextInput
           style={styles.input}
-          placeholder="Type Your Question here"
+          placeholder={t('askForm.one')}
           value={question}
           onChangeText={(text) => setQuestion(text)}
         />
@@ -33,12 +35,12 @@ function AskQuestForm({handleAskQuestion,handleRecQuestion}) {
       </View>
       <View style={styles.buttonGrp}>
       <TouchableOpacity style={styles.askButton} onPress={() => {handleAskQuestion(question),setQuestion("")}}>
-        <Text style={styles.askButtonText}>Ask Question</Text>
+        <Text style={styles.askButtonText}>{t('askForm.two')}</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.chatHistory} onPress={() => {handleShowChatHistory()}}>
       <View style={styles.iconContainer}>
     <MaterialIcons name="history" size={24} color="white" style={styles.icon} />
-    <Text style={styles.askButtonText}>Chat History</Text>
+    <Text style={styles.askButtonText}>{t('askForm.three')}</Text>
   </View>
       </TouchableOpacity>
       </View>

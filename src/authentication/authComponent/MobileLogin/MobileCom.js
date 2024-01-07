@@ -1,19 +1,21 @@
 import React from 'react';
 import {StyleSheet, Text, TextInput, TouchableOpacity, View, ImageBackground, Image} from 'react-native';
 import axios from 'axios';
+import ContentContext from '../../../Context/ContentContext';
+const startUrl = ContentContext.startUrl
 
 const MobileCom = ({setStep,mobileNo,setMobileNo}) => {
     const handleSignUp = () => {
         if(mobileNo?.length == 10){
           sendOTP(mobileNo)
         setStep(2);} else {
-          alert("Invalid mobileNo number");
+          alert("Invalid Mobile number");
         }
       };
 
       const sendOTP = async (mobileNo) => {
         try {
-          const response = await axios.post('https://merekisan.in/api/myApp/api/appAuth/user/sendotp', {
+          const response = await axios.post(`${startUrl}/api/myApp/api/appAuth/user/sendotp`, {
             mobileNo: mobileNo,
           });
           // Handle the response, e.g., show a message to the user
@@ -29,13 +31,13 @@ const MobileCom = ({setStep,mobileNo,setMobileNo}) => {
         <View>
         <Text style={styles.title}>Log in / Sign up</Text>
         <Text style={styles.subtitle}>
-          Please provide your mobileNo number to continue
+          Please provide your Mobile Number to continue
         </Text>
         <View style={styles.form}>
           <Text style={styles.label}>+91</Text>
           <TextInput
             style={styles.input}
-            placeholder="MobileNo number"
+            placeholder="Mobile Number"
             keyboardType="phone-pad"
             value={mobileNo}
             onChangeText={setMobileNo}
@@ -47,7 +49,7 @@ const MobileCom = ({setStep,mobileNo,setMobileNo}) => {
        <TouchableOpacity
       style={styles.button}
       onPress={ handleSignUp }>
-      <Text style={styles.buttonText}>{'Sign up'}</Text>
+      <Text style={styles.buttonText}>{'Login / Sign up'}</Text>
     </TouchableOpacity>
 
        </>
@@ -95,7 +97,7 @@ const styles = StyleSheet.create({
     input: {
       color: 'black', // changed from white to black
       flex: 1,
-      fontSize: 35,
+      fontSize: 30,
       fontWeight: '400',
       paddingHorizontal: 16,
     },

@@ -8,10 +8,10 @@ import SampleQuestion from '../components/SampleQuestion';
 const image = { uri: "https://www.onlygfx.com/wp-content/uploads/2021/04/white-triangle-pattern-seamless-background-2.jpg" };
 import { useNavigation } from '@react-navigation/native';
 import {generateRandomId, generateRandomMessageId} from "./../utils/randomId"
+import TermPopup from '../authentication/authComponent/MobileLogin/TermPopup';
 const ChatsScreens = () => {
   const navigation = useNavigation();
   const { t } = useTranslation();
-  const LanguageCode = t('LanguageCode') 
   generateRandomId
   function handleAskQuestion(quest) {
     if (quest.trim() !== '') {
@@ -55,28 +55,24 @@ const ChatsScreens = () => {
     <Flute />
    
     <Text style={{ fontSize: 24, color: 'black', textAlign: 'center', margin: 10 }}>
-   {(LanguageCode !== 'hi-IN')?( "Decoding Life's ") :("जीवन की पहेलियों को ") }
+   {t('main.one')}
     <Text style={{ color: '#34d399', fontWeight: 'bold' }}>
-    {(LanguageCode !== 'hi-IN')?("Puzzlements with Krishna: ") :("श्री कृष्ण के साथ सुलझाएँ: ") }
-      
+   {t('main.two')}
     </Text>
-    {(LanguageCode !== 'hi-IN')?("More Than 500,000+ Queries Responded") :("500,000+ से अधिक प्रश्नों का उत्तर दिया गया") }
+   {t('main.three')}
     {'\n'}
     <Text style={styles.headerText}>
-    {(LanguageCode !== 'hi-IN')?("ASK ") :("अपने प्रश्न का उत्तर") }
-        
+    {t('secMain.one')}
         <Text style={{ color: '#34d399', fontWeight: 'bold' }}>
-          
-    {(LanguageCode !== 'hi-IN')?("Divine Krishna ") :(" श्री कृष्ण से ") }
-
+    {t('secMain.two')}
           </Text>
-    {(LanguageCode !== 'hi-IN')?("your Questions:-") :("प्राप्त करें:-") }
-
+    {t('secMain.three')}
          </Text>
 </Text>
 
 <AskQuestForm handleAskQuestion={handleAskQuestion} handleRecQuestion={handleRecQuestion}/>
 <SampleQuestion style={{ margin:10,}} handleAskQuestion={handleAskQuestion}/>
+<TermPopup /> 
 
   </ImageBackground>
 </View>

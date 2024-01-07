@@ -30,7 +30,7 @@ const DonateComponent = () => {
 
   const {t} = useTranslation();
 
-  const amounts = [1, 5, 11, 21, 51, 101, 251, 501, 1100, 2100, 5100, 11000];
+  const amounts = [1, 5, 11, 21, 51, 101, 251, 501, 1100, 2100, 5100, 11000,21000,51000];
   const [selectedAmount, setSelectedAmount] = useState(21);
   const handlePayment = () => {
     // Replace 'YOUR_PAYMENT_LINK_HERE' with the actual payment link you want to open

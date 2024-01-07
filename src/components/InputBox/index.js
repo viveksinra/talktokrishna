@@ -11,10 +11,8 @@ import { generateRandomMessageId } from '../../utils/randomId';
 import RecordingComponent from './recordingCom';
 import TextInputCom from './textInputCom';
 import ExampleQuest from './ExampleQuest';
-// const startUrl = "https://merekisan.in"
-const startUrl = "http://192.168.1.13:2040"
-// const startUrl = "http://192.168.1.10:2040"
-
+import ContentContext from '../../Context/ContentContext';
+const startUrl = ContentContext.startUrl
 const InputBox = ({ godLink,chatId,question,isRec,isHistory }) => {
 const { messages } = useContext(MessageContext);
 const godMessage = messages[chatId];

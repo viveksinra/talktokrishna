@@ -9,9 +9,8 @@ import LottieView from 'lottie-react-native';
 import axios from 'axios'; // Import the axios library
 import { ActivityIndicator } from 'react-native';
 import { generateRandomMessageId } from '../../utils/randomId';
-const startUrl = "https://merekisan.in"
-// const startUrl = "http://192.168.1.12:2040"
-// const startUrl = "http://192.168.1.10:2040"
+import ContentContext from '../../Context/ContentContext';
+const startUrl = ContentContext.startUrl
 
 const RecordingComponent = ({isFirstRec,setIsFirstRec,setIsGettingResponse,godLink,chatId,sendAndGetResponse,onSend,newMessage,setNewMessage }) => {
 

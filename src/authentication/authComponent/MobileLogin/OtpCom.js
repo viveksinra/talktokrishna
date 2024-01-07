@@ -4,6 +4,8 @@ import axios from 'axios';
 
 import * as SecureStore from 'expo-secure-store';
 import { AppContext } from '../../../../context/appContext';
+import ContentContext from '../../../Context/ContentContext';
+const startUrl = ContentContext.startUrl
 
 const OtpCom = ({setStep,otp,setOtp,mobileNo}) => {
   const { setIsSignedIn } = useContext(AppContext);
@@ -30,7 +32,7 @@ const OtpCom = ({setStep,otp,setOtp,mobileNo}) => {
 
   const verifyOTP = async (mobileNumber, otp) => {
     try {
-      const response = await axios.post('https://merekisan.in/api/myApp/api/appAuth/user/verifyotp', {
+      const response = await axios.post(`${startUrl}/api/myApp/api/appAuth/user/verifyotp`, {
         mobileNumber: mobileNumber,
         otp: otp,
       });

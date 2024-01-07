@@ -3,12 +3,12 @@ import { ScrollView, View, Text, StyleSheet, TouchableOpacity } from 'react-nati
 import { Ionicons } from '@expo/vector-icons';
 import {engArray,hinArray} from './QuestArray';
 import { useTranslation } from 'react-i18next';
+import defaultQuestApi from '../../utils/defaultQuestApi';
 
 const ExampleQuest = ({onSend,setNewMessage}) => {
 const [showExamp, setShowExamp] = useState(true);
 const [isArrowUp, setIsArrowUp] = useState(false);
 const [messages, setMessages] = useState(engArray);  
-const [exmpHeader, setExmpHeader] = useState("Example Questions");  
 const { t } = useTranslation();
 const LanguageCode = t('LanguageCode') 
 const sendMessage = async(message) => {
@@ -16,17 +16,21 @@ const sendMessage = async(message) => {
     onSend()
 }
 useEffect(() => {
-if(LanguageCode == 'hi-IN'){
-    setMessages(hinArray)
-    setExmpHeader("उदाहरण के प्रश्न")
-}
-  }, [LanguageCode]);
+  const fetchData = async () => {
+let data = await defaultQuestApi(messages,LanguageCode)
+setMessages(data)
+  };
+
+  fetchData();
+}, [ LanguageCode]);
+
+
   return (
     <>
     {(showExamp)? 
       ( <>
       <View style={styles.header}>
-       <Text style={styles.headerText}>{exmpHeader}</Text>
+       <Text style={styles.headerText}>{t('exmQues.one')}</Text>
           {!isArrowUp ? (  <TouchableOpacity onPress={() => setIsArrowUp(true)}>
                <Ionicons name="arrow-up" size={24} color="green" style={styles.icon} />
                </TouchableOpacity>):
