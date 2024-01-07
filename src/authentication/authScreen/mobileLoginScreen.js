@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
   },
   container:{
     margin:10,
-    marginTop:100
+    marginTop:20
   },
 
 

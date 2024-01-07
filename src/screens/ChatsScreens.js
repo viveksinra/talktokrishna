@@ -1,18 +1,16 @@
 import React, { useState, useContext, useRef } from 'react';
 import { View, Text, TextInput, Button, Alert, StyleSheet,Animated,ScrollView,  ImageBackground } from 'react-native';
 import { useTranslation } from 'react-i18next';
-import { MessageContext } from './../../src/components/Message/MessageProvider';
 import Flute from '../components/Flute';
 import AskQuestForm from '../components/AskQuestion';
 import SampleQuestion from '../components/SampleQuestion';
 const image = { uri: "https://www.onlygfx.com/wp-content/uploads/2021/04/white-triangle-pattern-seamless-background-2.jpg" };
 import { useNavigation } from '@react-navigation/native';
-import {generateRandomId, generateRandomMessageId} from "./../utils/randomId"
+import {generateRandomId} from "./../utils/randomId"
 import TermPopup from '../authentication/authComponent/MobileLogin/TermPopup';
 const ChatsScreens = () => {
   const navigation = useNavigation();
   const { t } = useTranslation();
-  generateRandomId
   function handleAskQuestion(quest) {
     if (quest.trim() !== '') {
       const randomId = generateRandomId();
