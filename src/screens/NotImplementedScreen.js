@@ -1,6 +1,7 @@
 // src/screens/NotImplementedScreen.js
 
 import { View, Text, Image, StyleSheet } from 'react-native';
+import ContentContext from '../Context/ContentContext';
 
 const NotImplementedScreen = () => {
   return (
@@ -8,7 +9,7 @@ const NotImplementedScreen = () => {
       <Text style={styles.text}>Not Implemented!</Text>
       <Image
         source={{
-          uri: 'https://intellibrain-aws.s3.ap-south-1.amazonaws.com/assets/img/comingsoon.gif',
+          uri: ContentContext.commingSoon,
         }}
         style={styles.image}
         resizeMode="contain"

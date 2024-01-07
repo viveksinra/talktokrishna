@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { Image, View, StyleSheet, Animated } from 'react-native';
+import ContentContext from '../../Context/ContentContext';
 
 const Flute = () => {
   const spinValue = useRef(new Animated.Value(0)).current;
@@ -30,7 +31,7 @@ const Flute = () => {
     <View style={styles.container}>
       <Animated.Image
         style={{ ...styles.logo, transform: [{ rotate: spin }] }}
-        source={{ uri: 'https://gitagpt.org/static/gitaGPT.png' }}
+        source={{ uri: ContentContext.mainPicImg }}
       />
     </View>
   );

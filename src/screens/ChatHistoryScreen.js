@@ -5,9 +5,9 @@ import { useTranslation } from 'react-i18next';
 import { MessageContext } from '../components/Message/MessageProvider';
 import ChatHistoryItem from '../components/ChatHistoryItem';
 import NoChatHistory from '../components/ChatHistoryItem/NoChatHistory';
-import enChats from '../../assets/data/enChats.json';
 import lastMsg from '../../assets/data/lastMsg.json';
-const image = { uri: "https://images.unsplash.com/photo-1541140134513-85a161dc4a00?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Z3JleSUyMHRleHR1cmV8ZW58MHx8MHx8fDA%3D" };
+import ContentContext from '../Context/ContentContext';
+const image = { uri: ContentContext.chatHisBag };
 
 const ChatHistoryScreen = () => {
   const { messages } = useContext(MessageContext);

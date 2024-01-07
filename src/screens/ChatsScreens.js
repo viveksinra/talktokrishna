@@ -4,7 +4,8 @@ import { useTranslation } from 'react-i18next';
 import Flute from '../components/Flute';
 import AskQuestForm from '../components/AskQuestion';
 import SampleQuestion from '../components/SampleQuestion';
-const image = { uri: "https://www.onlygfx.com/wp-content/uploads/2021/04/white-triangle-pattern-seamless-background-2.jpg" };
+import ContentContext from '../Context/ContentContext';
+const image = { uri: ContentContext.mainBg };
 import { useNavigation } from '@react-navigation/native';
 import {generateRandomId} from "./../utils/randomId"
 import TermPopup from '../authentication/authComponent/MobileLogin/TermPopup';
@@ -18,7 +19,7 @@ const ChatsScreens = () => {
         id: randomId,
         chatId:randomId,
         name: "Shri Krishna",
-        image: "https://res.cloudinary.com/dncukhilq/image/upload/v1687251596/talktogod/godProfileImage/krisna_image_dfza9t.jpg",
+        image: ContentContext.krishnaImg,
         link: "krishna",
         question:quest,
         isRec:false,
@@ -35,7 +36,7 @@ const ChatsScreens = () => {
         id: randomId,
         chatId:randomId,
         name: "Shri Krishna",
-        image: "https://res.cloudinary.com/dncukhilq/image/upload/v1687251596/talktogod/godProfileImage/krisna_image_dfza9t.jpg",
+        image: ContentContext.krishnaImg,
         link: "krishna",
         question:"",
         isRec:true,

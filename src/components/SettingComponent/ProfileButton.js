@@ -4,9 +4,7 @@ import {useTranslation} from 'react-i18next';
 
 const ProfileButton = ({ onPress }) => {
   const {t} = useTranslation();
-  // const imageSource = "https://www.nicepng.com/png/detail/933-9332131_profile-picture-default-png.png";
-  const name = "Viivek Singh";
-  const status = "No Capacity to hate";
+
   return (
     <TouchableOpacity style={styles.container} onPress={onPress}>
       {/* <View style={styles.imageContainer}>

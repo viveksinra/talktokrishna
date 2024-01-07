@@ -8,6 +8,7 @@ import InputBox from '../components/InputBox';
 import { MessageContext } from './../../src/components/Message/MessageProvider';
 
 import defaultBg from '../../assets/images/BG.webp';
+import ContentContext from '../Context/ContentContext';
 
 const manyImg = [
   { uri: "https://th.bing.com/th/id/OIG.7.JpZdNFct0U0EMwJD1E?pid=ImgGn" },
@@ -29,7 +30,7 @@ const OneChatScreen = () => {
   const route = useRoute();
   const navigation = useNavigation();
   const buttonOpacity = new Animated.Value(1);
-  const donateButtonImage = 'https://res.cloudinary.com/dncukhilq/image/upload/v1683721708/talktogod/imageUsedInApp/Donate_Button-_umdown.png';
+  const donateButtonImage = ContentContext.donateButtonImage;
   const { messages } = useContext(MessageContext);
   const godLink = route.params.link;
   const chatId = route.params.chatId;

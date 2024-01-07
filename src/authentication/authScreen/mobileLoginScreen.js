@@ -3,7 +3,8 @@ import {StyleSheet, Text, TextInput, TouchableOpacity, View, ImageBackground, Im
 import MobileCom from '../authComponent/MobileLogin/MobileCom';
 import OtpCom from '../authComponent/MobileLogin/OtpCom';
 import TermPopup from '../authComponent/MobileLogin/TermPopup';
-const image = { uri: "https://www.onlygfx.com/wp-content/uploads/2021/04/white-triangle-pattern-seamless-background-2.jpg" };
+import ContentContext from '../../Context/ContentContext';
+const image = { uri: ContentContext.mainBg };
 import { useTranslation } from 'react-i18next';
 
 const MobileLoginScreen = () => {
@@ -38,7 +39,7 @@ const MobileLoginScreen = () => {
   </View>
   <Image
         style={styles.image}
-        source={{ uri: 'https://res.cloudinary.com/qualifierphoto/image/upload/v1702646398/enter-your-number-for-for-2-step-verification-illustration-concept-vector-removebg-preview_ss2bql.png' }} // Replace with the actual image source
+        source={{ uri: ContentContext.loginImg }} // Replace with the actual image source
       />
   </ImageBackground>
   );
