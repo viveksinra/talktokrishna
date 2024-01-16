@@ -6,6 +6,7 @@ import ChatHistoryScreen from '../screens/ChatHistoryScreen';
 import MainTabNavigator from './MainTabNavigator';
 import NotImplementedScreen from '../screens/NotImplementedScreen';
 import { useTranslation } from 'react-i18next';
+import ProfileScreen from '../screens/ProfileScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -20,6 +21,11 @@ const AuthenticatedNavigator = () => {
         name="ChatHistoryScreen"
         component={ChatHistoryScreen}
         options={{ title: t('chatHis.one') }}
+      />
+      <Stack.Screen
+        name="ProfileScreen"
+        component={ProfileScreen}
+        options={{ title: 'Profile' }}
       />
       <Stack.Screen name="Contacts" component={NotImplementedScreen} />
     </Stack.Navigator>
