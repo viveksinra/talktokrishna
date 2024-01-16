@@ -6,9 +6,9 @@ export const AppContext = React.createContext();
 
 export const AppContextProvider = ({ children }) => {
   const [isSignedIn, setIsSignedIn] = useState(false);
-  const [name, setName] = useState('');
-  const [mobileNumber, setMobileNumber] = useState('');
-  const [status, setStatus] = useState('');
+  const [name, setName] = useState('Update Your Name');
+  const [mobileNumber, setMobileNumber] = useState('Your Mobile No');
+  const [status, setStatus] = useState('Your Status');
   const [userImage, setUserImage] = useState(ContentContext.krishnaImg);
   const appContextValue = useMemo(() => ({
     isSignedIn,

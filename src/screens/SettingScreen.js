@@ -10,14 +10,22 @@ import * as SecureStore from 'expo-secure-store';
 import axios from 'axios';
 import ContentContext, { startUrl } from '../Context/ContentContext';
 import { AppContext } from '../../context/appContext';
+import handleSetData from '../utils/handleSetData';
 
 const SettingScreen = () => {
   const { name,
-
+    setName,
+    mobileNumber,
+    setMobileNumber,
     status,
+    setStatus,
     userImage,
-  } = useContext(AppContext);
+    setUserImage } = useContext(AppContext);
+  useEffect(() => {
+    // Call handleSetData when the component mounts
+    handleSetData({ setName, setStatus, setUserImage, setMobileNumber });
 
+  }, []); 
 
   return (
     <LinearGradient colors={['#FFFFFF', '#D9E4F5']} style={styles.container}>
