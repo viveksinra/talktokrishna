@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity, TextInput, ImageBackground, Button, Alert } from 'react-native';
 import ContentContext, { startUrl } from '../Context/ContentContext';
 import { MaterialIcons } from '@expo/vector-icons';
@@ -8,64 +8,61 @@ import axios from 'axios';
 import { ToastAndroid } from 'react-native';
 
 const ProfileScreen = () => {
-  const [name, setName] = useState('Vivek Singh');
-  const [status, setStatus] = useState('I Love this app so much that I can\'t tell yourself how much we love');
-  const [image, setImage] = useState('https://res.cloudinary.com/dncukhilq/image/upload/v1687251596/talktogod/godProfileImage/krisna_image_dfza9t.jpg'); // replace with your image url
+  const [name, setName] = useState('');
+  const [mobileNumber, setMobileNumber] = useState('');
+  const [status, setStatus] = useState('');
+  const [userImage, setUserImage] = useState(''); // replace with your image url
   const [isEditingName, setIsEditingName] = useState(false);
   const [isEditingStatus, setIsEditingStatus] = useState(false);
-  const [modalVisible, setModalVisible] = useState(false);
-
+  useEffect(() => {
+    // Call handleSetData when the component mounts
+    handleSetData();
+  }, []); 
   const handleImageChange = async () => {
 // Alert.alert('icon clicked')
     let result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      mediaTypes: ImagePicker.MediaTypeOptions.Images, 
       allowsEditing: true,
       aspect: [4, 4],
       quality: 0.3,
     });
 
     if (!result.canceled) {
-      setImage(result.uri);
-    }
-    if (!result.canceled) {
-      setImage(result.uri);
-  
+      setUserImage(result.uri);
+    
       let localUri = result.uri;
       let filename = localUri.split('/').pop();
-  
+    
       // Infer the type of the image
       let match = /\.(\w+)$/.exec(filename);
       let type = match ? `image/${match[1]}` : `image`;
-  
+    
       // Prepare the data
       let formData = new FormData();
-      formData.append('image', { uri: localUri, name: filename, type, });
-
-      try{
-        let url = `${startUrl}/api/myApp/api/ttg/getAiResponse/profile/userImage`
-  // Retrieve the token from SecureStore
-  
-  let token = await SecureStore.getItemAsync('authToken');
-  console.log(token)
-  // Set the Authorization header for the request
-        const response = await axios.post(url,formData ,
-          {
-            headers: {
-              'Content-Type': 'multipart/form-data',
-              'Authorization': token,
-            },
-          })
-          let myRes = response.data
-          if(myRes.variant == "success"){
-            ToastAndroid.show('Profile Picture Updated', ToastAndroid.SHORT);
-
-          }
-      }catch(error){
-        ToastAndroid.show('some error occured ', ToastAndroid.SHORT);
-  
-        console.log("some error occured while sending or setting the message" + error)
+      formData.append('userImage', { uri: localUri, name: filename, type, });
+    
+      try {
+        let url = `${startUrl}/api/myApp/api/ttg/getAiResponse/profile/userImage`;
+        let token = await SecureStore.getItemAsync('authToken');
+        console.log(token);
+    
+        const response = await axios.post(url, formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+            'Authorization': token,
+          },
+        });
+    
+        let myRes = response.data;
+        if (myRes.variant === "success") {
+          ToastAndroid.show('Profile Picture Updated', ToastAndroid.SHORT);
+        }
+      } catch (error) {
+        ToastAndroid.show('Some error occurred', ToastAndroid.SHORT);
+        console.log("Some error occurred while sending or setting the message" + error);
       }
     }
+    
   };
 
   const commonUpdateFunction = async (requestData, type) => {
@@ -102,13 +99,71 @@ const ProfileScreen = () => {
   const handleStatusChange = async () => {
     await commonUpdateFunction({ status }, 'status');
   };
+  const handleSetData = async () => {
+    try {
+      // Step 1: Retrieve profile data from local storage
+      let storedProfile = await SecureStore.getItemAsync('profile');
+  
+      if (storedProfile) {
+        // Parse the stored JSON data
+        storedProfile = JSON.parse(storedProfile);
+  
+        // Destructure profile data
+        const { name, status, userImage, mobileNumber } = storedProfile;
+  
+        // Step 2: Update state with retrieved profile data
+        setName(name);
+        setStatus(status);
+        setUserImage(userImage); // Assuming userImage is the key for the profile image
+        setMobileNumber(mobileNumber); // Assuming userImage is the key for the profile image
+        // Assuming you have a state variable for mobile number as well, update it if needed
+      } else {
+        console.log('Profile data not found in local storage');
+      }
+        // Step 3: Make API call to fetch additional data
+        const url = `${startUrl}/api/myApp/api/ttg/getAiResponse/getProfile/oneUser`;
+        const token = await SecureStore.getItemAsync('authToken');
+  
+        const response = await axios.get(url, {
+          headers: {
+            Authorization: token,
+          },
+        });
+  
+        // Step 4: Update state with fetched data
+        const apiData = response.data;
+  
+        if (apiData) {
+          // Assuming apiData has properties like name, status, userImage, mobileNumber
+          setName(apiData.name);
+          setStatus(apiData.status);
+          setUserImage(apiData.userImage);
+          setMobileNumber(apiData.mobileNumber);
+  
+          // Step 5: Update local storage with the new data
+          const updatedProfile = {
+            name: apiData.name,
+            status: apiData.status,
+            userImage: apiData.userImage,
+            mobileNumber: apiData.mobileNumber,
+          };
+  
+          await SecureStore.setItemAsync('profile', JSON.stringify(updatedProfile));
+        }
+    
+    } catch (error) {
+      console.error('Error while handling data:', error);
+      // Handle errors accordingly
+    }
+  };
+  
   
 
   return (
     <View style={styles.container}>
       <ImageBackground source={{ uri: ContentContext.mainBg }} style={styles.imageBG}>
         <TouchableOpacity onPress={handleImageChange} style={styles.imageContainer}>
-          <Image source={{ uri: image }} style={styles.image} />
+          <Image source={{ uri: userImage }} style={styles.userImage} />
           <View style={styles.iconContainer} >
           <MaterialIcons name="add-a-photo" size={24} color="white"  style={styles.cameraIcon} />
           </View>
@@ -149,7 +204,7 @@ const ProfileScreen = () => {
             </View>
           )}
           <Text style={styles.label}>Mobile Number</Text>
-          <Text style={styles.nonEditableLabel}>9846173905</Text>
+          <Text style={styles.nonEditableLabel}>{mobileNumber}</Text>
         </View>
       </ImageBackground>
     </View>
@@ -171,7 +226,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     alignItems: 'center',
   },
-  image: {
+  userImage: {
     width: 150,
     height: 150,
     borderRadius: 75,
