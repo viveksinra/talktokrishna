@@ -1,11 +1,14 @@
 import React from 'react';
 import { StyleSheet, TouchableOpacity, View, Text, Image } from 'react-native';
 import {useTranslation} from 'react-i18next';
-import ContentContext from '../../Context/ContentContext';
 import Icon from 'react-native-vector-icons/FontAwesome'; // import the Icon component
 import { useNavigation } from '@react-navigation/native';
 
-const ProfileButton = () => {
+
+const ProfileButton = ({name,status,userImage}) => {
+
+
+
   const {t} = useTranslation();
   const navigation = useNavigation();
   function handleShowProfile() {
@@ -14,14 +17,14 @@ const ProfileButton = () => {
   return (
     <TouchableOpacity style={styles.container} onPress={handleShowProfile}>
       <View style={styles.imageContainer}>
-        <Image source={{ uri: ContentContext.krishnaImg }} style={styles.image} />
+        <Image source={{ uri: userImage }} style={styles.image} />
       </View>
       <View style={styles.profileContainer}>
         <Text style={styles.name}>
-          Vivek Singh
+          {name}
         </Text>
         <Text style={styles.status} numberOfLines={1}>
-          I Love this app so much that i can't tell yourself how much we love
+          {status}
         </Text>
       </View>
       <View>

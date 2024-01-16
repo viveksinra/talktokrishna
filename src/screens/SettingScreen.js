@@ -1,14 +1,41 @@
-import { View, Text } from 'react-native'
-import React from 'react'
-import SettingComponent from '../components/SettingComponent'
+import React, {useState, useEffect, useContext} from 'react';
+import { StyleSheet } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
+import LanguageSelector from '../components/SettingComponent/LanguageSelector';
+import ProfileButton from '../components/SettingComponent/ProfileButton';
+import DeleteChatButton from '../components/SettingComponent/DeleteChatButton';
+import ShareCom from '../components/SettingComponent/shareCom';
+import LogOutButton from '../components/SettingComponent/LogOutButton';
+import * as SecureStore from 'expo-secure-store';
+import axios from 'axios';
+import ContentContext, { startUrl } from '../Context/ContentContext';
+import { AppContext } from '../../context/appContext';
 
 const SettingScreen = () => {
-  return (
-    <View style={{ flex: 1 }}>
-      <SettingComponent />
-      </View>
-    
-  )
-}
+  const { name,
 
-export default SettingScreen
+    status,
+    userImage,
+  } = useContext(AppContext);
+
+
+  return (
+    <LinearGradient colors={['#FFFFFF', '#D9E4F5']} style={styles.container}>
+      {/* <OtherComponent /> */}
+      <ProfileButton name={name} status={status} userImage={userImage}/>
+      {/* <ThemeSelector /> */}
+      <LanguageSelector showIconOnly={false}  />
+      <DeleteChatButton />
+      <ShareCom />
+      <LogOutButton />
+    </LinearGradient>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});
+
+export default SettingScreen;

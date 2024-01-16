@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity, TextInput, ImageBackground, Button, Alert } from 'react-native';
 import ContentContext, { startUrl } from '../Context/ContentContext';
 import { MaterialIcons } from '@expo/vector-icons';
@@ -6,12 +6,17 @@ import * as ImagePicker from 'expo-image-picker';
 import * as SecureStore from 'expo-secure-store';
 import axios from 'axios';
 import { ToastAndroid } from 'react-native';
+import { AppContext } from '../../context/appContext';
 
 const ProfileScreen = () => {
-  const [name, setName] = useState('');
-  const [mobileNumber, setMobileNumber] = useState('');
-  const [status, setStatus] = useState('');
-  const [userImage, setUserImage] = useState(''); // replace with your image url
+  const { name,
+    setName,
+    mobileNumber,
+    setMobileNumber,
+    status,
+    setStatus,
+    userImage,
+    setUserImage } = useContext(AppContext); // replace with your image url
   const [isEditingName, setIsEditingName] = useState(false);
   const [isEditingStatus, setIsEditingStatus] = useState(false);
   useEffect(() => {
@@ -44,7 +49,6 @@ const ProfileScreen = () => {
       try {
         let url = `${startUrl}/api/myApp/api/ttg/getAiResponse/profile/userImage`;
         let token = await SecureStore.getItemAsync('authToken');
-        console.log(token);
     
         const response = await axios.post(url, formData, {
           headers: {
@@ -70,7 +74,6 @@ const ProfileScreen = () => {
       let url = `${startUrl}/api/myApp/api/ttg/getAiResponse/profile/userData`;
       // Retrieve the token from SecureStore
       let token = await SecureStore.getItemAsync('authToken');
-      console.log(token);
       // Set the Authorization header for the request
       const response = await axios.post(
         url,
