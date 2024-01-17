@@ -28,7 +28,7 @@ const messageReducer = (state, action) => {
         return {
           ...state,
           messages: {},
-        };
+        };        
     case 'REMOVE_FULL_CHAT':
       const { chatIdToRemove } = action.payload;
       const { [chatIdToRemove]: _, ...remainingMessages } = state.messages;
@@ -82,8 +82,23 @@ export const MessageProvider = ({ children }) => {
   const removeFullChat = (chatIdToRemove) => {
     dispatch({ type: 'REMOVE_FULL_CHAT', payload: { chatIdToRemove } });
   };
+  const replaceMessagesInAsyncStorageAndContext = async newMessages => {
+    try {
+      // Save the new messages to AsyncStorage
+      await AsyncStorage.setItem('messages', JSON.stringify(newMessages));
+  
+      // Dispatch the action to replace the context
+      dispatch({
+        type: 'SET_MESSAGES',
+        payload: newMessages,
+      });
+    } catch (error) {
+      console.log('Error replacing messages in AsyncStorage:', error);
+    }
+  };
+  
   return (
-    <MessageContext.Provider value={{ messages: state.messages, addMessage,clearMessages,removeFullChat }}>
+    <MessageContext.Provider value={{ messages: state.messages, addMessage,clearMessages,removeFullChat,replaceMessagesInAsyncStorageAndContext }}>
       {children}
     </MessageContext.Provider>
   );

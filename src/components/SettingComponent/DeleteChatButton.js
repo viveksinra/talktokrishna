@@ -4,6 +4,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Ionicons } from '@expo/vector-icons';
 import { MessageContext } from './../../../src/components/Message/MessageProvider';
 import {useTranslation} from 'react-i18next';
+const { LocalDeleteAllChat, DbAndLocalDeleteAllChat } = require("../../utils/deleteChats");
 const DeleteChatButton = () => {
     const { t } = useTranslation();
   const { clearMessages } = useContext(MessageContext);
@@ -11,12 +12,9 @@ const DeleteChatButton = () => {
 
   const handleDelete = async () => {
     try {
-      await AsyncStorage.removeItem('messages');
-      clearMessages();
-      setDeleteModalVisible(false);
-
-      // Show a success toast on Android
-      ToastAndroid.show('All chat messages deleted successfully!', ToastAndroid.SHORT);
+      console.log("got called")
+     await DbAndLocalDeleteAllChat(clearMessages)
+     setDeleteModalVisible(false);
     } catch (error) {
       console.log('Error deleting messages from AsyncStorage:', error);
     }
@@ -40,7 +38,7 @@ const DeleteChatButton = () => {
         <View style={styles.modalContainer}>
           <Text style={styles.modalTitle}>{t('delete.confirm1')}</Text>
           <Text style={styles.modalText}>{t('delete.confirm2')}</Text>
-          <TouchableOpacity style={styles.modalButton} onPress={handleDelete}>
+          <TouchableOpacity style={styles.modalButton} onPress={() => handleDelete()}>
             <Text style={styles.modalButtonText}>{t('delete.confirm3')}</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.cancelButton} onPress={() => setDeleteModalVisible(false)}>

@@ -7,6 +7,8 @@ import { useTranslation } from 'react-i18next';
 import * as SecureStore from 'expo-secure-store';
 import { useNavigation } from '@react-navigation/native';
 import { AppContext } from '../../../context/appContext';
+const { LocalDeleteAllChat, DbAndLocalDeleteAllChat } = require("../../utils/deleteChats");
+
 
 const LogOutButton = () => {
   const { t } = useTranslation();
@@ -29,7 +31,7 @@ const LogOutButton = () => {
                 text: t("logout.one"),
                 onPress: async() => {
                     await SecureStore.deleteItemAsync('authToken');
-                    handleDeleteAllChat();
+                    LocalDeleteAllChat(clearMessages);
                     setIsSignedIn(false);
 
                 },
@@ -44,17 +46,7 @@ const LogOutButton = () => {
     }
   };
 
-  const handleDeleteAllChat = async () => {
-    try {
-      await AsyncStorage.removeItem('messages');
-      clearMessages();
 
-      // Show a success toast on Android
-      ToastAndroid.show('All chat messages deleted successfully!', ToastAndroid.SHORT);
-    } catch (error) {
-      console.log('Error deleting messages from AsyncStorage:', error);
-    }
-  };
 
   return (
     <TouchableOpacity style={styles.button} onPress={handleLogout}>
