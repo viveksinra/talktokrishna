@@ -15,6 +15,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import { MessageContext } from '../Message/MessageProvider';
 
 const defaultGodImg = require('./../../../assets/icon.png');
+const { DbAndLocalDeleteOneChatId } = require("../../utils/deleteChats");
 
 dayjs.extend(relativeTime);
 
@@ -38,7 +39,8 @@ const ChatListItem = ({ chat }) => {
 
   const onDelete = (chatId) => {
     console.log("delete me"+ chatId)
-    removeFullOneChatId(chatId);
+  
+    DbAndLocalDeleteOneChatId(removeFullOneChatId,chatId)
   };
 
   const handleDelete = () => {

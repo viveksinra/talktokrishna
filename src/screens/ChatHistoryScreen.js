@@ -13,7 +13,7 @@ const image = { uri: ContentContext.chatHisBag };
 
 const ChatHistoryScreen = () => {
   const {
-    removeFullOneChatId,
+   
     messages,
     clearMessages,
     replaceMessagesInAsyncStorageAndContext,
