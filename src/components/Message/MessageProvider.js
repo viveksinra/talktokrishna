@@ -79,7 +79,7 @@ export const MessageProvider = ({ children }) => {
   const clearMessages = () => {
     dispatch({ type: 'CLEAR_MESSAGES' });
   };
-  const removeFullChat = (chatIdToRemove) => {
+  const removeFullOneChatId = (chatIdToRemove) => {
     dispatch({ type: 'REMOVE_FULL_CHAT', payload: { chatIdToRemove } });
   };
   const replaceMessagesInAsyncStorageAndContext = async newMessages => {
@@ -98,7 +98,7 @@ export const MessageProvider = ({ children }) => {
   };
   
   return (
-    <MessageContext.Provider value={{ messages: state.messages, addMessage,clearMessages,removeFullChat,replaceMessagesInAsyncStorageAndContext }}>
+    <MessageContext.Provider value={{ messages: state.messages, addMessage,clearMessages,removeFullOneChatId,replaceMessagesInAsyncStorageAndContext }}>
       {children}
     </MessageContext.Provider>
   );

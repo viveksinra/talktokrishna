@@ -1,16 +1,28 @@
-import React, { useContext, useState } from 'react';
-import { Text, View, Image, StyleSheet, Pressable, TouchableOpacity, Alert } from 'react-native';
+import React, { useContext, useEffect, useState } from 'react';
+import {
+  Text,
+  View,
+  Image,
+  StyleSheet,
+  Pressable,
+  TouchableOpacity,
+  Alert,
+} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
-import Icon from 'react-native-vector-icons/MaterialIcons'; // You may need to install this library
-dayjs.extend(relativeTime);
-import { MessageContext } from '../../../src/components/Message/MessageProvider';
+import Icon from 'react-native-vector-icons/MaterialIcons';
+import { MessageContext } from '../Message/MessageProvider';
+
 const defaultGodImg = require('./../../../assets/icon.png');
 
-const ChatListItem = ({ chat }) => {
-const { removeFullChat } = useContext(MessageContext);
+dayjs.extend(relativeTime);
 
+const ChatListItem = ({ chat }) => {
+
+  const {
+    removeFullOneChatId,
+  } = useContext(MessageContext);
   const navigation = useNavigation();
   const [imageLoadError, setImageLoadError] = useState(false);
 
@@ -19,12 +31,16 @@ const { removeFullChat } = useContext(MessageContext);
     return null;
   }
 
+
   const handleImageError = () => {
     setImageLoadError(true);
   };
+
   const onDelete = (chatId) => {
-    removeFullChat(chatId)
-  }
+    console.log("delete me"+ chatId)
+    removeFullOneChatId(chatId);
+  };
+
   const handleDelete = () => {
     Alert.alert(
       'Delete Confirmation',
@@ -44,21 +60,23 @@ const { removeFullChat } = useContext(MessageContext);
     );
   };
 
+
+
+
+  const navigateToChat = () => {
+    navigation.navigate('OneChats', {
+      chatId: chat.chatId,
+      id: chat.chatId,
+      name: chat.user.name,
+      image: chat.user.image,
+      link: chat.user.link,
+      isRec: false,
+      isHistory: true,
+    });
+  };
+
   return (
-    <Pressable
-      onPress={() =>
-        navigation.navigate('OneChats', {
-          chatId: chat.chatId,
-          id: chat.chatId,
-          name: chat.user.name,
-          image: chat.user.image,
-          link: chat.user.link,
-          isRec: false,
-          isHistory: true,
-        })
-      }
-      style={styles.container}
-    >
+    <Pressable onPress={navigateToChat} style={styles.container}>
       <Image
         source={imageLoadError ? defaultGodImg : { uri: chat.user.image }}
         onError={handleImageError}
@@ -126,7 +144,6 @@ const styles = StyleSheet.create({
   deleteButton: {
     justifyContent: 'center',
     alignItems: 'center',
-    
   },
 });
 
