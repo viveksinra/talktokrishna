@@ -19,9 +19,25 @@ const DbAndLocalDeleteAllChat = async (clearMessages) => {
     try {
       await AsyncStorage.removeItem('messages');
       clearMessages();
-
+      let url = `${startUrl}/api/myApp/api/ttg/getAiResponse/delete/allChatsByUserId`;
+      // Retrieve the token from SecureStore
+      let token = await SecureStore.getItemAsync('authToken');
+      // Set the Authorization header for the request
+      const response = await axios.post(
+        url,
+        {  },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: token,
+          },
+        }
+      );
+      let myRes = response.data;
+      if (myRes.variant === 'success') {
+        ToastAndroid.show('All chat messages deleted successfully', ToastAndroid.SHORT);
+      }
       // Show a success toast on Android
-      ToastAndroid.show('All chat messages deleted successfully', ToastAndroid.SHORT);
     } catch (error) {
       console.log('Error deleting messages from AsyncStorage:', error);
     }
