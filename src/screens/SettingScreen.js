@@ -11,6 +11,8 @@ import axios from 'axios';
 import ContentContext, { startUrl } from '../Context/ContentContext';
 import { AppContext } from '../../context/appContext';
 import handleSetData from '../utils/handleSetData';
+import SocialAccount from '../components/Contact/SocialAccount';
+import TermPopup from '../authentication/authComponent/MobileLogin/TermPopup';
 
 const SettingScreen = () => {
   const { name,
@@ -35,7 +37,11 @@ const SettingScreen = () => {
       <LanguageSelector showIconOnly={false}  />
       <DeleteChatButton />
       <ShareCom />
+      <SocialAccount />
+
       <LogOutButton />
+<TermPopup /> 
+
     </LinearGradient>
   );
 };

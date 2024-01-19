@@ -14,7 +14,7 @@ const TermPopup = () => {
 
   return (
     <>
-      <TouchableOpacity onPress={toggleModal}>
+      <TouchableOpacity onPress={toggleModal} style={{ padding: 10, marginBottom: 0 }}>
       <Text style={styles.termsText}>
       {t('tAndC')}
     </Text>
