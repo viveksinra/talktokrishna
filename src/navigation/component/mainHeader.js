@@ -2,7 +2,7 @@
 
 import React, { useEffect } from 'react';
 import { View, Image, Animated } from 'react-native';
-const logoImage = require('../../../assets/images/appLogo.png');
+const logoImage = require('../../../commonAssets/images/appLogo.png');
 
 const MainHeader = () => {
   const buttonOpacity = new Animated.Value(1);

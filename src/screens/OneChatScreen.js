@@ -7,7 +7,7 @@ import Message from '../components/Message';
 import InputBox from '../components/InputBox';
 import { MessageContext } from './../../src/components/Message/MessageProvider';
 
-import defaultBg from '../../assets/images/BG.webp';
+import defaultBg from '../../commonAssets/images/BG.webp';
 import ContentContext from '../Context/ContentContext';
 
 const manyImg = [

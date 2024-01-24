@@ -177,7 +177,7 @@ const RecordingComponent = ({isFirstRec,setIsFirstRec,setIsGettingResponse,godLi
       <Modal animationType="slide" transparent={true} visible={isRecordingModalVisible}>
         <View style={styles.recordingModalContainer}>
           <LottieView
-            source={require('./../../../assets/animation/72428-yellow-mic.json')}
+            source={require('./../../../commonAssets/animation/72428-yellow-mic.json')}
             autoPlay
             loop
             style={styles.recordingMicAnimation}
@@ -198,7 +198,7 @@ const RecordingComponent = ({isFirstRec,setIsFirstRec,setIsGettingResponse,godLi
 <Modal animationType="slide" transparent={true} visible={isAnalyzing}>
 <View style={styles.recordingModalContainer}>
           <LottieView
-            source={require('./../../../assets/animation/analysing.json')}
+            source={require('./../../../commonAssets/animation/analysing.json')}
             autoPlay
             loop
             style={styles.newAnimation}

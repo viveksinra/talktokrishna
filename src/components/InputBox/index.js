@@ -146,7 +146,7 @@ let token = await SecureStore.getItemAsync('authToken');
 <Modal animationType="slide" transparent={true} visible={isGettingResponse}>
   <View style={styles.recordingModalContainer}>
   <LottieView
-      source={require('./../../../assets/animation/getting-response.json')}
+      source={require('./../../../commonAssets/animation/getting-response.json')}
       autoPlay
       loop
       style={styles.newAnimation}

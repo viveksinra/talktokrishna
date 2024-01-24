@@ -7,7 +7,7 @@ const GeneralLoading = ({ loading, loadingText }) => {
     <Modal animationType="slide" transparent={true} visible={loading}>
       <View style={styles.generalModalContainer}>
         <LottieView
-          source={require('../../../assets/animation/getting-response.json')}
+          source={require('../../../commonAssets/animation/getting-response.json')}
           autoPlay
           loop
           style={styles.newAnimation}

@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { MessageContext } from '../components/Message/MessageProvider';
 import ChatHistoryItem from '../components/ChatHistoryItem';
 import NoChatHistory from '../components/ChatHistoryItem/NoChatHistory';
-import lastMsg from '../../assets/data/lastMsg.json';
+import lastMsg from '../../commonAssets/data/lastMsg.json';
 import ContentContext from '../Context/ContentContext';
 import checkAndUpdateChatHistory from '../utils/checkAndUpdateChatHistory';
 import GeneralLoading from '../components/General/GeneralLoading';

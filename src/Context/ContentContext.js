@@ -8,7 +8,7 @@ mainBg:"https://www.onlygfx.com/wp-content/uploads/2021/04/white-triangle-patter
 loginImg:"https://res.cloudinary.com/qualifierphoto/image/upload/v1702646398/enter-your-number-for-for-2-step-verification-illustration-concept-vector-removebg-preview_ss2bql.png",
 mainPicImg:"https://gitagpt.org/static/gitaGPT.png",
 krishnaImg:"https://res.cloudinary.com/dncukhilq/image/upload/v1687251596/talktogod/godProfileImage/krisna_image_dfza9t.jpg",
-commingSoon:'https://intellibrain-aws.s3.ap-south-1.amazonaws.com/assets/img/comingsoon.gif',
+commingSoon:'https://intellibrain-aws.s3.ap-south-1.amazonaws.com/commonAssets/img/comingsoon.gif',
 donateButtonImage:'https://res.cloudinary.com/dncukhilq/image/upload/v1683721708/talktogod/imageUsedInApp/Donate_Button-_umdown.png'
 
 

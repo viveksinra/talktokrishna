@@ -6,7 +6,7 @@ import { Ionicons } from '@expo/vector-icons';
 const ShareCom = () => {
   const { t } = useTranslation();
   const appLink = 'https://play.google.com/store/apps/details?id=com.softechinfra.talktogod';
-  const appImage = require('./../../../assets/splash.png'); // Replace with the actual path
+  const appImage = require('./../../../commonAssets/splash.png'); // Replace with the actual path
 
   const shareMessage = t('shareMessage');
   

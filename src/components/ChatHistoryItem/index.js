@@ -14,7 +14,7 @@ import relativeTime from 'dayjs/plugin/relativeTime';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { MessageContext } from '../Message/MessageProvider';
 
-const defaultGodImg = require('./../../../assets/icon.png');
+const defaultGodImg = require('./../../../commonAssets/icon.png');
 const { DbAndLocalDeleteOneChatId } = require("../../utils/deleteChats");
 
 dayjs.extend(relativeTime);
