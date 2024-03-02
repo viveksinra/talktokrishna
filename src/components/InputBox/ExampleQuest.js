@@ -38,7 +38,7 @@ setMessages(data)
                  <Ionicons name="arrow-down" size={24} color="green" style={styles.icon} />
                </TouchableOpacity>)}
                <TouchableOpacity onPress={() => setShowExamp(false)}>
-               <Ionicons name="md-close" size={24} color="red" style={styles.icon} />
+               <Ionicons name="close-circle-outline" size={24} color="red" style={styles.icon} />
                </TouchableOpacity>
              </View>
          {isArrowUp ? (

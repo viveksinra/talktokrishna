@@ -55,7 +55,7 @@ const OneChatScreen = () => {
       },
       headerLeft: () => (
         <TouchableOpacity onPress={() => navigation.goBack()} style={{ marginLeft: 5, marginRight: 5, flexDirection: 'row', alignItems: 'center' }}>
-          <Ionicons name="ios-arrow-back" size={24} color="black" style={{ marginRight: 5 }} />
+          <Ionicons name="chevron-back-outline" size={24} color="black" style={{ marginRight: 5 }} />
           <Image
             source={{ uri: route.params.image }}
             style={{ width: 40, height: 40, borderRadius: 20 }}
